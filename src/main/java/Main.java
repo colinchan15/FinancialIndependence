@@ -1,26 +1,31 @@
 package main.java;
 
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main (String[]args){
 
+        LinkedList IOllist = new LinkedList();
+        LinkedList TEllist = new LinkedList();
+
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Hello and welcome to Prism - a budgeting software designed for students");
-        System.out.println("-------------------------------------------------------------------------");
-        System.out.println("What is your name?");
-
-        String name = scanner.nextLine();
-        String[] split = name.split(" ");
-
-        System.out.println("Welcome to your budget " + split[0]);
-        System.out.println("You are about to be a world-class budgeter. To get you there, you’ll find (look up!) six quick getting-started steps at the top of your budget (so handy!). We'll also send bits of budgeting wisdom to b1480898@nwytg.net, so make sure that address is correct.\n" +
-                "\n" +
-                "That's enough chit-chat, are you ready? Of course you are!");
-
-        System.out.println("I'd like to get to know a bit about you first. Please select the monthly expenses that you would like to budget.");
+        // Greeting Message
+//        System.out.println("Hello and welcome to Prism - a budgeting software designed for students");
+//        System.out.println("-------------------------------------------------------------------------");
+//        System.out.println("What is your name?");
+//
+//        String name = scanner.nextLine();
+//        String[] split = name.split(" ");
+//
+//        System.out.println("Welcome to your budget " + split[0]);
+//        System.out.println("You are about to be a world-class budgeter. To get you there, you’ll find (look up!) six quick getting-started steps at the top of your budget (so handy!). We'll also send bits of budgeting wisdom to b1480898@nwytg.net, so make sure that address is correct.\n" +
+//                "\n" +
+//                "That's enough chit-chat, are you ready? Of course you are!");
+//
+//        System.out.println("I'd like to get to know a bit about you first. Please select the monthly expenses that you would like to budget.");
 
         char ch;
         do{
@@ -45,18 +50,45 @@ public class Main {
                     System.out.println("7. Interest & Fees");
 
                     do{
-                        int IOchoice = scanner.nextInt();
-                        if(IOchoice == -1){
+                        int IOChoice = scanner.nextInt();
+                        if(IOChoice == -1){
                             break;
                         }else{
-
+                            IOllist.add(IOChoice);
                         }
                     }while(true);
+                    break;
+
+                case 2:
+                    System.out.println("\nTrue Expenses \n");
+                    System.out.println("Please select all true expenses you'd like to include. If done, or none, enter -1.");
+                    System.out.println("1. Auto Maintenance");
+                    System.out.println("2. Home Maintenance");
+                    System.out.println("3. Renter's/Home Insurance");
+                    System.out.println("4. Medical");
+                    System.out.println("5. Clothing");
+                    System.out.println("6. Gifts");
+                    System.out.println("7. Giving");
+                    System.out.println("4. Computer Replacement");
+                    System.out.println("5. Software Subscriptions");
+                    System.out.println("6. Stuff I Forgot to Budget For");
+
+                    do{
+                        int TEChoice = scanner.nextInt();
+                        if(TEChoice == -1){
+                            break;
+                        }else{
+                            TEllist.add(TEChoice);
+                        }
+                    }while(true);
+                    break;
             }
-            System.out.println("\nDo you want to continue (Type y or n) \n");
+            System.out.println("\nReturn to menu? (Type y or n) \n");
             ch = scanner.next().charAt(0);
         }while (ch == 'Y'|| ch == 'y');
 
+        System.out.println(IOllist);
+        System.out.println(TEllist);
 
 
     }
