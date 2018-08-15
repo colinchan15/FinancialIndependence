@@ -89,7 +89,7 @@ public class Main {
         }while (ch == 'Y'|| ch == 'y');
 
         // test if IOBudget.java is working
-        IOBudget.budgeting(IOllist);
+        double IOtotal = IOBudget.budgeting(IOllist);
 
         // test if llinkedlists are working
         System.out.println(IOllist);
