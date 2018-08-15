@@ -1,12 +1,13 @@
 package main.java;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main (String[]args){
-
+        IOBudget IOBudget = new IOBudget();
         LinkedList IOllist = new LinkedList();
         LinkedList TEllist = new LinkedList();
 
@@ -87,6 +88,10 @@ public class Main {
             ch = scanner.next().charAt(0);
         }while (ch == 'Y'|| ch == 'y');
 
+        // test if IOBudget.java is working
+        IOBudget.budgeting(IOllist);
+
+        // test if llinkedlists are working
         System.out.println(IOllist);
         System.out.println(TEllist);
 
