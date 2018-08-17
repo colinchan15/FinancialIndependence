@@ -19,7 +19,7 @@ public class IOBudget {
         ioBudget.budgeting(linkedList);
 
         // need to fix this
-        ioBudget.displayIOBudget(hm1);
+        ioBudget.displayIOBudget();
     }
 
     public static double budgeting(LinkedList<Integer> linkedList) {
@@ -74,14 +74,14 @@ public class IOBudget {
     }
 
     // need to figure out how to display hashmap
-    public void displayIOBudget(HashMap <String, Double> hashMap){
-        for (HashMap.Entry <String, Double> entry : hashMap.entrySet()){
+    public void displayIOBudget(){
+        for (HashMap.Entry <String, Double> entry : hm1.entrySet()){
             System.out.println(entry.getKey() + "/" + entry.getValue());
         }
     }
 
-    public HashMap<String, Double> getIOHashMap (HashMap <String, Double> hashMap){
-        return hashMap;
+    public HashMap<String, Double> getIOHashMap (){
+        return hm1;
     }
 
 }

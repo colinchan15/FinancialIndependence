@@ -90,6 +90,7 @@ public class Main {
 
         // test if IOBudget.java is working
         double IOtotal = IOBudget.budgeting(IOllist);
+        IOBudget.displayIOBudget();
 
         // test if llinkedlists are working
         System.out.println(IOllist);
