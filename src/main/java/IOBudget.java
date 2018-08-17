@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 public class IOBudget {
 
-    Scanner scanner = new Scanner(System.in);
-    HashMap hm = new HashMap();
+    private static Scanner scanner = new Scanner(System.in);
+    private static HashMap <String, Double> hm1 = new HashMap();
 
     public static void main(String[] args) {
         IOBudget ioBudget = new IOBudget();
@@ -19,53 +19,53 @@ public class IOBudget {
         ioBudget.budgeting(linkedList);
 
         // need to fix this
-//        ioBudget.displayIOBudget(hm);
+        ioBudget.displayIOBudget(hm1);
     }
 
-    public double budgeting(LinkedList<Integer> linkedList) {
+    public static double budgeting(LinkedList<Integer> linkedList) {
         double IOTotal = 0;
         for (int i = 0; i < linkedList.size(); i++) {
             switch (linkedList.get(i)) {
                 case 1:
                     System.out.println("Rent/Mortgage to be budgeted: ");
                     Double rentMortgage = scanner.nextDouble();
-                    hm.put("Rent and Mortgage", rentMortgage);
+                    hm1.put("Rent and Mortgage", rentMortgage);
                     IOTotal += rentMortgage;
                     break;
                 case 2:
                     System.out.println("Electric costs to be budgeted: ");
                     Double electric = scanner.nextDouble();
-                    hm.put("Electric", electric);
+                    hm1.put("Electric", electric);
                     IOTotal += electric;
                     break;
                 case 3:
                     System.out.println("Water costs to be budgeted: ");
                     Double water = scanner.nextDouble();
-                    hm.put("Water", water);
+                    hm1.put("Water", water);
                     IOTotal += water;
                     break;
                 case 4:
                     System.out.println("Internet costs to be budgeted: ");
                     Double internet = scanner.nextDouble();
-                    hm.put("Internet", internet);
+                    hm1.put("Internet", internet);
                     IOTotal += internet;
                     break;
                 case 5:
                     System.out.println("Grocery costs to be budgeted: ");
                     Double groceries = scanner.nextDouble();
-                    hm.put("Groceries", groceries);
+                    hm1.put("Groceries", groceries);
                     IOTotal += groceries;
                     break;
                 case 6:
                     System.out.println("Transportation costs to be budgeted: ");
                     Double transportation = scanner.nextDouble();
-                    hm.put("Transportation", transportation);
+                    hm1.put("Transportation", transportation);
                     IOTotal += transportation;
                     break;
                 case 7:
                     System.out.println("Interest and fees to be budgeted: ");
                     double interestFees = scanner.nextDouble();
-                    hm.put("Interest Fees", interestFees);
+                    hm1.put("Interest Fees", interestFees);
                     IOTotal += interestFees;
                     break;
             }
@@ -74,8 +74,14 @@ public class IOBudget {
     }
 
     // need to figure out how to display hashmap
-    public void displayIOBudget(HashMap hashMap){
-        System.out.println(hashMap.entrySet());
+    public void displayIOBudget(HashMap <String, Double> hashMap){
+        for (HashMap.Entry <String, Double> entry : hashMap.entrySet()){
+            System.out.println(entry.getKey() + "/" + entry.getValue());
+        }
+    }
+
+    public HashMap<String, Double> getIOHashMap (HashMap <String, Double> hashMap){
+        return hashMap;
     }
 
 }
