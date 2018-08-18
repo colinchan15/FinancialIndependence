@@ -18,12 +18,12 @@ public class IOBudget {
         linkedList.add(5);
         ioBudget.budgeting(linkedList);
 
-        // need to fix this
         ioBudget.displayIOBudget();
     }
 
     public static double budgeting(LinkedList<Integer> linkedList) {
         double IOTotal = 0;
+        System.out.println("\nImmediate Obligations budget inputting section");
         for (int i = 0; i < linkedList.size(); i++) {
             switch (linkedList.get(i)) {
                 case 1:
@@ -73,10 +73,10 @@ public class IOBudget {
         return(IOTotal);
     }
 
-    // need to figure out how to display hashmap
-    public void displayIOBudget(){
+    public static void displayIOBudget(){
+        System.out.println("\n----------Immediate Obligations budgeted items---------- ");
         for (HashMap.Entry <String, Double> entry : hm1.entrySet()){
-            System.out.println(entry.getKey() + "/" + entry.getValue());
+            System.out.println(entry.getKey() + ":  $" + entry.getValue());
         }
     }
 
