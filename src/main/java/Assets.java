@@ -30,7 +30,11 @@ public class Assets {
                     System.out.println("How many chequing accounts do you have? ");
                     int chequingAccTotal = scanner.nextInt();
                     System.out.println("Please enter the name of the account and its current balance separated by a comma");
+                    String chequingArray [] = new String [chequingAccTotal];
                     for(int j = 0; j < chequingAccTotal; j++){
+                        String chequingInput = scanner.next();
+                        String chequingInpNoSpace = chequingInput.replaceAll("\\s","");
+                        
                         //
                     }
 
