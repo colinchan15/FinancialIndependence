@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class IOBudget {
 
     private static Scanner scanner = new Scanner(System.in);
-    private static HashMap <String, Double> hm1 = new HashMap();
+    private static HashMap <String, Double> hmIO = new HashMap();
 
     public static void main(String[] args) {
         IOBudget ioBudget = new IOBudget();
@@ -29,43 +29,43 @@ public class IOBudget {
                 case 1:
                     System.out.println("Rent/Mortgage to be budgeted: ");
                     Double rentMortgage = scanner.nextDouble();
-                    hm1.put("Rent and Mortgage", rentMortgage);
+                    hmIO.put("Rent and Mortgage", rentMortgage);
                     IOTotal += rentMortgage;
                     break;
                 case 2:
                     System.out.println("Electric costs to be budgeted: ");
                     Double electric = scanner.nextDouble();
-                    hm1.put("Electric", electric);
+                    hmIO.put("Electric", electric);
                     IOTotal += electric;
                     break;
                 case 3:
                     System.out.println("Water costs to be budgeted: ");
                     Double water = scanner.nextDouble();
-                    hm1.put("Water", water);
+                    hmIO.put("Water", water);
                     IOTotal += water;
                     break;
                 case 4:
                     System.out.println("Internet costs to be budgeted: ");
                     Double internet = scanner.nextDouble();
-                    hm1.put("Internet", internet);
+                    hmIO.put("Internet", internet);
                     IOTotal += internet;
                     break;
                 case 5:
                     System.out.println("Grocery costs to be budgeted: ");
                     Double groceries = scanner.nextDouble();
-                    hm1.put("Groceries", groceries);
+                    hmIO.put("Groceries", groceries);
                     IOTotal += groceries;
                     break;
                 case 6:
                     System.out.println("Transportation costs to be budgeted: ");
                     Double transportation = scanner.nextDouble();
-                    hm1.put("Transportation", transportation);
+                    hmIO.put("Transportation", transportation);
                     IOTotal += transportation;
                     break;
                 case 7:
                     System.out.println("Interest and fees to be budgeted: ");
                     double interestFees = scanner.nextDouble();
-                    hm1.put("Interest Fees", interestFees);
+                    hmIO.put("Interest Fees", interestFees);
                     IOTotal += interestFees;
                     break;
             }
@@ -75,13 +75,13 @@ public class IOBudget {
 
     public static void displayIOBudget(){
         System.out.println("\n----------Immediate Obligations budgeted items---------- ");
-        for (HashMap.Entry <String, Double> entry : hm1.entrySet()){
+        for (HashMap.Entry <String, Double> entry : hmIO.entrySet()){
             System.out.println(entry.getKey() + ":  $" + entry.getValue());
         }
     }
 
     public HashMap<String, Double> getIOHashMap (){
-        return hm1;
+        return hmIO;
     }
 
 }

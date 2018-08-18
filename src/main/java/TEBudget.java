@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class TEBudget {
 
     private static Scanner scanner = new Scanner(System.in);
-    private static HashMap <String, Double> hm2 = new HashMap();
+    private static HashMap <String, Double> hmTE = new HashMap();
 
     public static void main(String[] args) {
         TEBudget teBudget = new TEBudget();
@@ -30,55 +30,55 @@ public class TEBudget {
                 case 1:
                     System.out.println("Auto Maintenance costs to be budgeted: ");
                     Double autoMaintenance = scanner.nextDouble();
-                    hm2.put("Auto Maintenance", autoMaintenance);
+                    hmTE.put("Auto Maintenance", autoMaintenance);
                     TETotal += autoMaintenance;
                     break;
                 case 2:
                     System.out.println("Home Maintenance costs to be budgeted: ");
                     Double homeMaintenance = scanner.nextDouble();
-                    hm2.put("Home Maintenance", homeMaintenance);
+                    hmTE.put("Home Maintenance", homeMaintenance);
                     TETotal += homeMaintenance;
                     break;
                 case 3:
                     System.out.println("Renter's/Home Insurance costs to be budgeted: ");
                     Double rentHomeIns = scanner.nextDouble();
-                    hm2.put("Renter's/Home Insurance", rentHomeIns);
+                    hmTE.put("Renter's/Home Insurance", rentHomeIns);
                     TETotal += rentHomeIns;
                     break;
                 case 4:
                     System.out.println("Medical costs to be budgeted: ");
                     Double medical = scanner.nextDouble();
-                    hm2.put("Medical", medical);
+                    hmTE.put("Medical", medical);
                     TETotal += medical;
                     break;
                 case 5:
                     System.out.println("Clothing costs to be budgeted: ");
                     Double clothing = scanner.nextDouble();
-                    hm2.put("Clothing", clothing);
+                    hmTE.put("Clothing", clothing);
                     TETotal += clothing;
                     break;
                 case 6:
                     System.out.println("Gift costs to be budgeted: ");
                     Double gift = scanner.nextDouble();
-                    hm2.put("Gifts", gift);
+                    hmTE.put("Gifts", gift);
                     TETotal += gift;
                     break;
                 case 7:
                     System.out.println("Computer Replacement costs to be budgeted: ");
                     Double compRepla = scanner.nextDouble();
-                    hm2.put("Computer Replacement", compRepla);
+                    hmTE.put("Computer Replacement", compRepla);
                     TETotal += compRepla;
                     break;
                 case 8:
                     System.out.println("Software Subscription costs to be budgeted: ");
                     Double softwareSub = scanner.nextDouble();
-                    hm2.put("Software Subscription", softwareSub);
+                    hmTE.put("Software Subscription", softwareSub);
                     TETotal += softwareSub;
                     break;
                 case 9:
                     System.out.println("Stuff I forgot to budget for... costs to be budgeted: ");
                     Double stuff = scanner.nextDouble();
-                    hm2.put("Stuff I forgot to budget for", stuff);
+                    hmTE.put("Stuff I forgot to budget for", stuff);
                     TETotal += stuff;
                     break;
             }
@@ -88,13 +88,13 @@ public class TEBudget {
 
     public static void displayTEBudget(){
         System.out.println("\n----------True Expenses budgeted items----------");
-        for (HashMap.Entry <String, Double> entry : hm2.entrySet()){
+        for (HashMap.Entry <String, Double> entry : hmTE.entrySet()){
             System.out.println(entry.getKey() + ":  $" + entry.getValue());
         }
     }
 
     public HashMap<String, Double> getIOHashMap (){
-        return hm2;
+        return hmTE;
     }
 
 }
