@@ -13,25 +13,26 @@ public class Assets {
     private static HashMap <String, Double> hmFixedTerm = new HashMap();
 
     public static void main(String[] args) {
+//        main.java.Assets assets = new main.java.Assets();
         Assets assets = new Assets();
         LinkedList linkedList = new LinkedList();
         AgeCalculator ageCalculator = new AgeCalculator();
-//        linkedList.add(1);
-//        linkedList.add(2);
-//        linkedList.add(3);
-//        linkedList.add(4);
-//        System.out.println(assets.assets(linkedList));
-//        assets.displayAssets();
-//        assets.displayInterests();
-//        assets.displayFixedTermLength();
-        String currentDate = "2018-08-19";
-        String birthDate = "1996-05-06";
-        System.out.println(ageCalculator.ageCalculator(birthDate,currentDate));
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+        linkedList.add(4);
+        System.out.println(assets.assets(linkedList, "2")); // change birthDate to actual date
+        assets.displayAssets();
+        assets.displayInterests();
+        assets.displayFixedTermLength();
+//        String currentDate = "2018-08-19";
+//        String birthDate = "1996-05-06";
+//        System.out.println(ageCalculator.ageCalculator(birthDate,currentDate));
 
     }
 
     public static double assets(LinkedList<Integer> linkedList, String birthDate) {
-        Assets assets = new Assets();
+        main.java.Assets assets = new main.java.Assets();
         double assetsTotal = 0;
         System.out.println("\nAssets inflow and outflow inputting section");
         for (int i = 0; i < linkedList.size(); i++) {
@@ -42,16 +43,16 @@ public class Assets {
                     scanner.nextLine();
                     System.out.println("Please enter the name of the account and its current balance separated by a comma");
                     Double chequingTotal = 0.0;
-                    Double chequingBalance = assets.setHmAssets(false, false, "- Chequing Account", chequingAccNum, hmAssets, hmInterest, hmFixedTerm, chequingTotal);
+                    Double chequingBalance = assets.setChequing(chequingAccNum,chequingTotal);
                     assetsTotal += chequingBalance;
                     break;
                 case 2:
                     System.out.println("How many savings accounts do you have?");
                     int savingsAccNum = scanner.nextInt();
                     scanner.nextLine();
-                    System.out.println("Please enter the name of the account and its current balance separated by a comma");
+                    System.out.println("Please enter the name of the account, its current balance, and its interest rate separated by a comma");
                     double savingsTotal = 0.0;
-                    Double savingsBalance = assets.setHmAssets(true, false, "- Savings Account", savingsAccNum, hmAssets, hmInterest, hmFixedTerm, savingsTotal);
+                    Double savingsBalance = assets.setSavings(savingsAccNum, savingsTotal, false);
                     assetsTotal += savingsBalance;
                     break;
                 case 3:
@@ -60,7 +61,7 @@ public class Assets {
                     scanner.nextLine();
                     System.out.println("Please enter the name of the account, its current balance, and its interest rate separated by a comma");
                     double HISavingsTotal = 0.0;
-                    Double HISavingsBalance = assets.setHmAssets(true, false, "- High-Interest Savings Account", HISavingsAccNum, hmAssets, hmInterest, hmFixedTerm, HISavingsTotal);
+                    Double HISavingsBalance = assets.setSavings(HISavingsAccNum, HISavingsTotal, true);
                     assetsTotal += HISavingsBalance;
                     break;
                 case 4:
@@ -69,18 +70,18 @@ public class Assets {
                     scanner.nextLine();
                     System.out.println("Please enter the name of the account, its current balance, its interest rate, and length of fixed term (in years) separated by a comma");
                     double GICTotal = 0.0;
-                    Double GICBalance = assets.setHmAssets(true, true, "- GIC Investment", GICAccNum, hmAssets, hmInterest, hmFixedTerm, GICTotal);
+                    Double GICBalance = assets.setGIC(GICAccNum, GICTotal);
                     assetsTotal += GICBalance;
                     break;
-                case 5:
-                    System.out.println("How many Tax-Free Savings Accounts have you invested in?");
-                    int TFSAAccNum = scanner.nextInt();
-                    scanner.nextLine();
-                    System.out.println("Please enter the name of the account, its current balance, its interest rate, amount you've invested this year, and amount you've withdrawn this year");
-                    double TFSATotal = 0.0;
-                    Double TFSABalance = assets.setHmAssets(true, true, "- TFSA Investment", TFSAAccNum, hmAssets, hmInterest, hmFixedTerm, TFSATotal);
-                    assetsTotal += TFSABalance;
-                    break;
+//                case 5:
+//                    System.out.println("How many Tax-Free Savings Accounts have you invested in?");
+//                    int TFSAAccNum = scanner.nextInt();
+//                    scanner.nextLine();
+//                    System.out.println("Please enter the name of the account, its current balance, its interest rate, amount you've invested this year, and amount you've withdrawn this year");
+//                    double TFSATotal = 0.0;
+//                    Double TFSABalance = assets.setHmAssets(true, true, "- TFSA Investment", TFSAAccNum, hmAssets, hmInterest, hmFixedTerm, TFSATotal);
+//                    assetsTotal += TFSABalance;
+//                    break;
             }
         }
         return assetsTotal;
@@ -113,27 +114,61 @@ public class Assets {
         return hmAssets;
     }
 
-    public static double setHmAssets(boolean notChequing, boolean fixedTerm, String accountType, int numOfAccounts, HashMap<String, Double> hmAssets, HashMap <String, Double> hmInterests, HashMap <String, Double> hmFixedTerm, Double assetsTotal) {
-        for (int i = 0; i < numOfAccounts; i++) {
+    public static Double setChequing(int numOfAccounts, Double assetsTotal){
+        Chequing setChequing;
+        for(int i = 0; i < numOfAccounts; i++){
             String assetsInput = scanner.nextLine();
-            String[] assetsSplit = assetsInput.replaceAll("\\s", "").split(",");
-            String assetsAccName = assetsSplit[0] + " " + accountType;
+            String [] assetsSplit = assetsInput.replaceAll("\\s", "").split(",");
+            String assetsAccName = assetsSplit[0] + " " + "- Chequing Account";
             Double assetsAccBalance = Double.parseDouble(assetsSplit[1]);
-            Double assetsAccInterest = 0.0;
-            Double assetsFixedTermLength = 0.0;
-            if (notChequing == true) {
-                assetsAccInterest = Double.parseDouble(assetsSplit[2]);
-            }
-            if (fixedTerm == true){
-                assetsFixedTermLength = Double.parseDouble(assetsSplit[3]);
-            }
+            setChequing = new Chequing(assetsAccName, assetsAccBalance);
+            hmAssets.put(setChequing.getAccName(), setChequing.getCurrentBalance());
+            assetsTotal += assetsAccBalance;
+        }
+        return assetsTotal;
+    }
 
-            hmAssets.put(assetsAccName, assetsAccBalance);
-            hmInterests.put(assetsAccName, assetsAccInterest);
-            hmFixedTerm.put(assetsAccName, assetsFixedTermLength);
+    public static Double setSavings(int numOfAccounts, Double assetsTotal, boolean HISavings){
+        Savings setSavings;
+        for(int i = 0; i < numOfAccounts; i++){
+            String assetsInput = scanner.nextLine();
+            String [] assetsSplit = assetsInput.replaceAll("\\s", "").split(",");
+            if(HISavings == false) {
+                String assetsAccName = assetsSplit[0] + " " + "- Savings Account";
+                Double assetsAccBalance = Double.parseDouble(assetsSplit[1]);
+                Double assetsInterest = Double.parseDouble(assetsSplit[2]);
+                setSavings = new Savings(assetsAccName, assetsAccBalance, assetsInterest);
+                hmAssets.put(setSavings.getAccName(), setSavings.getCurrentBalance());
+                hmInterest.put(setSavings.getAccName(), setSavings.getInterest());
+                assetsTotal += assetsAccBalance;
+            }else {
+                String assetsAccName = assetsSplit[0] + " " + "- High-Interest Savings Account";
+                Double assetsAccBalance = Double.parseDouble(assetsSplit[1]);
+                Double assetsInterest = Double.parseDouble(assetsSplit[2]);
+                setSavings = new Savings(assetsAccName, assetsAccBalance, assetsInterest);
+                hmAssets.put(setSavings.getAccName(), setSavings.getCurrentBalance());
+                hmInterest.put(setSavings.getAccName(), setSavings.getInterest());
+                assetsTotal += assetsAccBalance;
+            }
+        }
+        return assetsTotal;
+    }
+
+    public static Double setGIC(int numOfAccounts, Double assetsTotal){
+        GIC GIC;
+        for(int i = 0; i < numOfAccounts; i++){
+            String assetsInput = scanner.nextLine();
+            String [] assetsSplit = assetsInput.replaceAll("\\s", "").split(",");
+            String assetsAccName = assetsSplit[0] + " " + "- GIC Account";
+            Double assetsAccBalance = Double.parseDouble(assetsSplit[1]);
+            Double assetsInterest = Double.parseDouble(assetsSplit[2]);
+            Double assetsFixedTermLength = Double.parseDouble(assetsSplit[3]);
+            GIC = new GIC(assetsAccName, assetsAccBalance, assetsInterest, assetsFixedTermLength);
+            hmAssets.put(GIC.getAccName(), GIC.getCurrentBalance());
+            hmInterest.put(GIC.getAccName(), GIC.getInterest());
+            hmFixedTerm.put(GIC.getAccName(), GIC.getFixedTermLength());
             assetsTotal += assetsAccBalance;
         }
         return assetsTotal;
     }
 }
-
