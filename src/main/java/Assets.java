@@ -21,13 +21,15 @@ public class Assets {
         linkedList.add(2);
         linkedList.add(3);
         linkedList.add(4);
+
+        //        String currentDate = "2018-08-19";
+        //        String birthDate = "1996-05-06";
+        //        System.out.println(ageCalculator.ageCalculator(birthDate,currentDate));
         System.out.println(assets.assets(linkedList, "2")); // change birthDate to actual date
+
         assets.displayAssets();
         assets.displayInterests();
         assets.displayFixedTermLength();
-//        String currentDate = "2018-08-19";
-//        String birthDate = "1996-05-06";
-//        System.out.println(ageCalculator.ageCalculator(birthDate,currentDate));
 
     }
 
