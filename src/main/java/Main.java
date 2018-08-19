@@ -22,6 +22,9 @@ public class Main {
 //
 //        String name = scanner.nextLine();
 //        String[] split = name.split(" ");
+        System.out.println("When were you born? (Please input in this format: YYYY-MM-DD");
+        String birthDate = scanner.nextLine();
+
 //
 //        System.out.println("Welcome to your budget " + split[0]);
 //        System.out.println("You are about to be a world-class budgeter. To get you there, you’ll find (look up!) six quick getting-started steps at the top of your budget (so handy!). We'll also send bits of budgeting wisdom to b1480898@nwytg.net, so make sure that address is correct.\n" +
