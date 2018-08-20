@@ -14,4 +14,15 @@ public class AgeCalculator {
             return 0;
         }
     }
+
+    public String getCurrentDate (){
+        long millis=System.currentTimeMillis();
+        java.sql.Date date=new java.sql.Date(millis);
+        return date.toString();
+    }
+
+    public int getAge(String birthDate){
+        String currentDate = getCurrentDate();
+        return ageCalculator(birthDate, currentDate);
+    }
 }

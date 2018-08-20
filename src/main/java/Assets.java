@@ -17,15 +17,16 @@ public class Assets {
         Assets assets = new Assets();
         LinkedList linkedList = new LinkedList();
         AgeCalculator ageCalculator = new AgeCalculator();
-        linkedList.add(1);
-        linkedList.add(2);
-        linkedList.add(3);
-        linkedList.add(4);
 
-        //        String currentDate = "2018-08-19";
-        //        String birthDate = "1996-05-06";
-        //        System.out.println(ageCalculator.ageCalculator(birthDate,currentDate));
-        System.out.println(assets.assets(linkedList, "2")); // change birthDate to actual date
+//        linkedList.add(1);
+//        linkedList.add(2);
+//        linkedList.add(3);
+//        linkedList.add(4);
+
+        System.out.println("What is your birth date?");
+        String birthDate = scanner.nextLine();
+        int clientAge = ageCalculator.getAge(birthDate);
+        System.out.println(assets.assets(linkedList, clientAge)); // change birthDate to actual date
 
         assets.displayAssets();
         assets.displayInterests();
@@ -33,7 +34,7 @@ public class Assets {
 
     }
 
-    public static double assets(LinkedList<Integer> linkedList, String birthDate) {
+    public static double assets(LinkedList<Integer> linkedList, int clientAge) {
         main.java.Assets assets = new main.java.Assets();
         double assetsTotal = 0;
         System.out.println("\nAssets inflow and outflow inputting section");
@@ -75,15 +76,11 @@ public class Assets {
                     Double GICBalance = assets.setGIC(GICAccNum, GICTotal);
                     assetsTotal += GICBalance;
                     break;
-//                case 5:
-//                    System.out.println("How many Tax-Free Savings Accounts have you invested in?");
-//                    int TFSAAccNum = scanner.nextInt();
-//                    scanner.nextLine();
-//                    System.out.println("Please enter the name of the account, its current balance, its interest rate, amount you've invested this year, and amount you've withdrawn this year");
-//                    double TFSATotal = 0.0;
-//                    Double TFSABalance = assets.setHmAssets(true, true, "- TFSA Investment", TFSAAccNum, hmAssets, hmInterest, hmFixedTerm, TFSATotal);
+                case 5:
+                    System.out.println("Please enter the name of the account, its current balance, its interest rate, amount you've invested this year, and amount you've withdrawn this year");
+                    double TFSATotal = 0.0;
 //                    assetsTotal += TFSABalance;
-//                    break;
+                    break;
             }
         }
         return assetsTotal;
@@ -157,7 +154,7 @@ public class Assets {
     }
 
     public static Double setGIC(int numOfAccounts, Double assetsTotal){
-        GIC GIC;
+        GIC gic;
         for(int i = 0; i < numOfAccounts; i++){
             String assetsInput = scanner.nextLine();
             String [] assetsSplit = assetsInput.replaceAll("\\s", "").split(",");
@@ -165,12 +162,27 @@ public class Assets {
             Double assetsAccBalance = Double.parseDouble(assetsSplit[1]);
             Double assetsInterest = Double.parseDouble(assetsSplit[2]);
             Double assetsFixedTermLength = Double.parseDouble(assetsSplit[3]);
-            GIC = new GIC(assetsAccName, assetsAccBalance, assetsInterest, assetsFixedTermLength);
-            hmAssets.put(GIC.getAccName(), GIC.getCurrentBalance());
-            hmInterest.put(GIC.getAccName(), GIC.getInterest());
-            hmFixedTerm.put(GIC.getAccName(), GIC.getFixedTermLength());
+            gic = new GIC(assetsAccName, assetsAccBalance, assetsInterest, assetsFixedTermLength);
+            hmAssets.put(gic.getAccName(), gic.getCurrentBalance());
+            hmInterest.put(gic.getAccName(), gic.getInterest());
+            hmFixedTerm.put(gic.getAccName(), gic.getFixedTermLength());
             assetsTotal += assetsAccBalance;
         }
+        return assetsTotal;
+    }
+
+    public static Double setTFSA(Double assetsTotal ){
+        TFSA tfsa;
+        String assetsInput = scanner.nextLine();
+        String [] assetsSplit = assetsInput.replaceAll("\\s", "").split(",");
+        String assetsAccName = assetsSplit[0] + " " + "- TFSA Account";
+        Double assetsAccBalance = Double.parseDouble(assetsSplit[1]);
+        Double assetsInterest = Double.parseDouble(assetsSplit[2]);
+        Double TFSAAmtDeposited = Double.parseDouble(assetsSplit[3]);
+        Double TFSAAmtWithdrawn = Double.parseDouble(assetsSplit[4]);
+        tfsa = new TFSA(assetsAccName,assetsAccBalance, assetsInterest, TFSAAmtDeposited, TFSAAmtWithdrawn);
+
+        assetsTotal += assetsAccBalance;
         return assetsTotal;
     }
 }

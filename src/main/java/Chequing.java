@@ -44,3 +44,22 @@ class GIC extends Savings{
         return fixedTermLength;
     }
 }
+
+class TFSA extends Savings{
+    public Double amtWithdrawn;
+    public Double amtDeposited;
+    public TFSA(String accName, Double currentBalance, Double interest, Double amtDeposited, Double amtWithdrawn){
+        super(accName,currentBalance,interest);
+        this.amtDeposited = amtDeposited;
+        this.amtWithdrawn = amtWithdrawn;
+    }
+
+    public Double getAmtDeposited(){
+        return amtDeposited;
+    }
+
+    public Double getAmtWithdrawn(){
+        return amtWithdrawn;
+    }
+
+}
