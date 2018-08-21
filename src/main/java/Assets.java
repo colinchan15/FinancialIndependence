@@ -79,6 +79,7 @@ public class Assets {
                 case 5:
                     System.out.println("Please enter the name of the account, its current balance, its interest rate, amount you've invested this year, and amount you've withdrawn this year");
                     double TFSATotal = 0.0;
+                    Double TFSABalance = assets.setTFSA(TFSATotal);
 //                    assetsTotal += TFSABalance;
                     break;
             }
