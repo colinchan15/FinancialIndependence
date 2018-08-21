@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f5bc694-20b5-4ef6-8a61-79218731c4c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Assets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Assets.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/TFSAAnnualLimitHM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TFSAAnnualLimitHM.java" afterDir="false" />
     </list>
@@ -61,12 +60,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="14982" />
+          <entry key="java" value="15031" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="14982" />
+          <entry key="JAVA" value="15031" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -95,11 +94,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Assets.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="81" column="67" selection-start-line="81" selection-start-column="67" selection-end-line="81" selection-end-column="67" />
+            <state relative-caret-position="128">
+              <caret line="174" column="50" selection-start-line="174" selection-start-column="50" selection-end-line="174" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -107,24 +106,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/TFSAAnnualLimitHM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="2280">
+              <caret line="152" column="55" selection-start-line="152" selection-start-column="55" selection-end-line="152" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#252#280#0" expanded="true" />
-                <element signature="e#350#359#0" expanded="true" />
-                <element signature="e#533#542#0" expanded="true" />
-                <element signature="e#702#711#0" expanded="true" />
-                <element signature="e#871#880#0" expanded="true" />
-                <element signature="e#1040#1049#0" expanded="true" />
-                <element signature="e#1209#1218#0" expanded="true" />
-                <element signature="e#1378#1387#0" expanded="true" />
-                <element signature="e#1554#1563#0" expanded="true" />
-                <element signature="e#1725#1734#0" expanded="true" />
-                <element signature="e#1896#1905#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -145,7 +133,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Chequing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
+            <state relative-caret-position="240">
               <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="e#1388#1389#0" expanded="true" />
@@ -200,8 +188,8 @@
         <option value="$PROJECT_DIR$/src/test/test.java" />
         <option value="$PROJECT_DIR$/src/main/java/Chequing.java" />
         <option value="$PROJECT_DIR$/src/main/java/AgeCalculator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Assets.java" />
         <option value="$PROJECT_DIR$/src/main/java/TFSAAnnualLimitHM.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Assets.java" />
       </list>
     </option>
   </component>
@@ -267,7 +255,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534811230582" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534811319520" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -399,12 +387,12 @@
       <workItem from="1534563850479" duration="8403000" />
       <workItem from="1534612100622" duration="12605000" />
       <workItem from="1534701128370" duration="13640000" />
-      <workItem from="1534803860348" duration="4791000" />
+      <workItem from="1534803860348" duration="5074000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65353000" />
+    <option name="totallyTimeSpent" value="65636000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -507,19 +495,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Chequing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#1388#1389#0" expanded="true" />
-            <element signature="e#1423#1424#0" expanded="true" />
-            <element signature="e#1465#1466#0" expanded="true" />
-            <element signature="e#1499#1500#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/AgeCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -530,33 +505,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Assets.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Chequing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="81" column="67" selection-start-line="81" selection-start-column="67" selection-end-line="81" selection-end-column="67" />
+        <state relative-caret-position="240">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1388#1389#0" expanded="true" />
+            <element signature="e#1423#1424#0" expanded="true" />
+            <element signature="e#1465#1466#0" expanded="true" />
+            <element signature="e#1499#1500#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/TFSAAnnualLimitHM.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="2280">
+          <caret line="152" column="55" selection-start-line="152" selection-start-column="55" selection-end-line="152" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#252#280#0" expanded="true" />
-            <element signature="e#350#359#0" expanded="true" />
-            <element signature="e#533#542#0" expanded="true" />
-            <element signature="e#702#711#0" expanded="true" />
-            <element signature="e#871#880#0" expanded="true" />
-            <element signature="e#1040#1049#0" expanded="true" />
-            <element signature="e#1209#1218#0" expanded="true" />
-            <element signature="e#1378#1387#0" expanded="true" />
-            <element signature="e#1554#1563#0" expanded="true" />
-            <element signature="e#1725#1734#0" expanded="true" />
-            <element signature="e#1896#1905#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Assets.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="174" column="50" selection-start-line="174" selection-start-column="50" selection-end-line="174" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -172,6 +172,7 @@ public class Assets {
         return assetsTotal;
     }
 
+    // finish up the tfsa function and case Aug 20
     public static Double setTFSA(Double assetsTotal ){
         TFSA tfsa;
         String assetsInput = scanner.nextLine();

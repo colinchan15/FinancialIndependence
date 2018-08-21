@@ -1,14 +1,12 @@
 package main.java;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class TFSAAnnualLimitHM {
 
-        private static Map<String, ArrayList<Integer>> tfsaALHM = new HashMap<String, ArrayList<Integer>>();
+        private static Map<String, ArrayList<Integer>> tfsaALHM = new HashMap();
 
         public static void main (String[]args){
             TFSAAnnualLimitHM tfsa = new TFSAAnnualLimitHM();
@@ -107,52 +105,52 @@ public class TFSAAnnualLimitHM {
         }
 
         public void setTFSAALHM(){
-            ArrayList<Integer> oNine = new ArrayList<Integer>();
+            ArrayList<Integer> oNine = new ArrayList();
             oNine.add(5000);
             oNine.add(5000);
             tfsaALHM.put("2009", oNine);
 
-            ArrayList<Integer> ten = new ArrayList<Integer>();
+            ArrayList<Integer> ten = new ArrayList();
             ten.add(5000);
             ten.add(10000);
             tfsaALHM.put("2010", ten);
 
-            ArrayList<Integer> eleven = new ArrayList<Integer>();
+            ArrayList<Integer> eleven = new ArrayList();
             eleven.add(5000);
             eleven.add(15000);
             tfsaALHM.put("2011", eleven);
 
-            ArrayList<Integer> twelve = new ArrayList<Integer>();
+            ArrayList<Integer> twelve = new ArrayList();
             twelve.add(5000);
             twelve.add(20000);
             tfsaALHM.put("2012", twelve);
 
-            ArrayList<Integer> thirteen = new ArrayList<Integer>();
+            ArrayList<Integer> thirteen = new ArrayList();
             thirteen.add(5500);
             thirteen.add(25500);
             tfsaALHM.put("2013", thirteen);
 
-            ArrayList<Integer> fourteen = new ArrayList<Integer>();
+            ArrayList<Integer> fourteen = new ArrayList();
             fourteen.add(5500);
             fourteen.add(31000);
             tfsaALHM.put("2014", fourteen);
 
-            ArrayList<Integer> fifteen = new ArrayList<Integer>();
+            ArrayList<Integer> fifteen = new ArrayList();
             fifteen.add(10000);
             fifteen.add(41000);
             tfsaALHM.put("2015", fifteen);
 
-            ArrayList<Integer> sixteen = new ArrayList<Integer>();
+            ArrayList<Integer> sixteen = new ArrayList();
             sixteen.add(5500);
             sixteen.add(46500);
             tfsaALHM.put("2016", sixteen);
 
-            ArrayList<Integer> seventeen = new ArrayList<Integer>();
+            ArrayList<Integer> seventeen = new ArrayList();
             seventeen.add(5500);
             seventeen.add(52000);
             tfsaALHM.put("2017", seventeen);
 
-            ArrayList<Integer> eighteen = new ArrayList<Integer>();
+            ArrayList<Integer> eighteen = new ArrayList();
             eighteen.add(5500);
             eighteen.add(57500);
             tfsaALHM.put("2018", eighteen);
