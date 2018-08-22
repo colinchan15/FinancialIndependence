@@ -1,5 +1,6 @@
 package main.java;
 
+// Constructors for the different asset accounts
 class Chequing {
 
     String accName;

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+// this class sets a predefined hashmap containing the cumulative and annual contribution limits for TFSAs per year
 public class TFSAAnnualLimitHM {
 
         private static Map<String, ArrayList<Double>> tfsaALHM = new HashMap();

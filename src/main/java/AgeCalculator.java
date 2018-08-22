@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.Calendar;
 
+// standard age calculator mainly used for getting TFSA contribution limits
 public class AgeCalculator {
 
     public int ageCalculator (String birthDate, String currentDate){

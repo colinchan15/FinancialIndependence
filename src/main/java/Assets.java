@@ -44,6 +44,7 @@ public class Assets {
 
     }
 
+    // Main function for returning $total assets
     public static double assets(LinkedList<Integer> linkedList, int clientAge) {
         main.java.Assets assets = new main.java.Assets();
         double assetsTotal = 0;
@@ -112,6 +113,7 @@ public class Assets {
         return assetsTotal;
     }
 
+    // functions for displaying hash maps storing the asset information
     public static void displayAssets(){
         System.out.println("\n----------Total Assets---------- ");
         for (HashMap.Entry <String, Double> entry : hmAssets.entrySet()){
@@ -161,6 +163,7 @@ public class Assets {
         return assetsTotal;
     }
 
+    // set savings, chequing, high-interest saving, GIC, TFSA, and RRSP info to respective hashmaps
     public static Double setSavings(int numOfAccounts, Double assetsTotal, boolean HISavings){
         Savings setSavings;
         for(int i = 0; i < numOfAccounts; i++){
