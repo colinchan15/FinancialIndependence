@@ -52,7 +52,6 @@ public class Main {
                     System.out.println("4. Guaranteed Investments Certificate");
                     System.out.println("5. Tax-Free Savings Account");
                     System.out.println("6. Registered Retirement Savings Plan");
-                    System.out.println("7. Registered Education Savings Plan");
 
                     do {
                         int assetChoice = scanner.nextInt();

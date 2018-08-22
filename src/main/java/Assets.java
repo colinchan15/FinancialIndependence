@@ -23,18 +23,19 @@ public class Assets {
         LinkedList linkedList = new LinkedList();
         AgeCalculator ageCalculator = new AgeCalculator();
 
-//        linkedList.add(1);
-//        linkedList.add(2);
-//        linkedList.add(3);
-//        linkedList.add(4);
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+        linkedList.add(4);
         linkedList.add(5);
+        linkedList.add(6);
 
         System.out.println("What is your birth date?");
         String birthDate = scanner.nextLine();
         int clientAge = ageCalculator.getAge(birthDate);
         System.out.println(assets.assets(linkedList, clientAge));
-        System.out.println(TFSAAvailableContributionRoomCurr);
-        System.out.println(TFSAAvailableContributionRoomNext);
+//        System.out.println(TFSAAvailableContributionRoomCurr);
+//        System.out.println(TFSAAvailableContributionRoomNext);
 
         assets.displayAssets();
         assets.displayInterests();
@@ -150,7 +151,7 @@ public class Assets {
         Chequing setChequing;
         for(int i = 0; i < numOfAccounts; i++){
             String assetsInput = scanner.nextLine();
-            String [] assetsSplit = assetsInput.replaceAll("\\s", "").split(",");
+            String [] assetsSplit = assetsInput.replaceAll("\\s", "").replaceAll("\\$", "").replaceAll("\\%", "").split(",");
             String assetsAccName = assetsSplit[0] + " " + "- Chequing Account";
             Double assetsAccBalance = Double.parseDouble(assetsSplit[1]);
             setChequing = new Chequing(assetsAccName, assetsAccBalance);
@@ -164,7 +165,7 @@ public class Assets {
         Savings setSavings;
         for(int i = 0; i < numOfAccounts; i++){
             String assetsInput = scanner.nextLine();
-            String [] assetsSplit = assetsInput.replaceAll("\\s", "").split(",");
+            String [] assetsSplit = assetsInput.replaceAll("\\s", "").replaceAll("\\$", "").replaceAll("\\%", "").split(",");
             if(HISavings == false) {
                 String assetsAccName = assetsSplit[0] + " " + "- Savings Account";
                 Double assetsAccBalance = Double.parseDouble(assetsSplit[1]);
@@ -190,7 +191,7 @@ public class Assets {
         GIC gic;
         for(int i = 0; i < numOfAccounts; i++){
             String assetsInput = scanner.nextLine();
-            String [] assetsSplit = assetsInput.replaceAll("\\s", "").split(",");
+            String [] assetsSplit = assetsInput.replaceAll("\\s", "").replaceAll("\\$", "").replaceAll("\\%", "").split(",");
             String assetsAccName = assetsSplit[0] + " " + "- GIC Account";
             Double assetsAccBalance = Double.parseDouble(assetsSplit[1]);
             Double assetsInterest = Double.parseDouble(assetsSplit[2]);
