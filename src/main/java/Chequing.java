@@ -50,13 +50,13 @@ class GIC extends Savings {
 class TFSA extends Savings {
     public Double amtWithdrawn;
     public Double amtDeposited;
-    public Double amtROR;
+    public Double TFSAROR;
 
     public TFSA(String accName, Double currentBalance, Double interest, Double amtDeposited, Double amtWithdrawn, Double amtROR) {
         super(accName, currentBalance, interest);
         this.amtDeposited = amtDeposited;
         this.amtWithdrawn = amtWithdrawn;
-        this.amtROR = amtROR;
+        this.TFSAROR = amtROR;
     }
 
     public Double getAmtDeposited() {
@@ -67,8 +67,20 @@ class TFSA extends Savings {
         return amtWithdrawn;
     }
 
-    public Double getAmtROR() {
-        return amtROR;
+    public Double getTFSAROR() {
+        return TFSAROR;
+    }
+}
+
+class RRSP extends Chequing{
+    public Double RRSPROR;
+
+    public RRSP(String accName, Double currentBalance, Double RRSPROR){
+        super(accName, currentBalance);
+        this.RRSPROR = RRSPROR;
     }
 
+    public Double getRRSPROR(){
+        return RRSPROR;
+    }
 }

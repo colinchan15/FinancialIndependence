@@ -89,8 +89,8 @@ public class Assets {
                 case 5:
                     AgeCalculator ageCalculator = new AgeCalculator();
                     TFSAAnnualLimitHM tfsaLimitTable = new TFSAAnnualLimitHM();
-                    System.out.println("Please enter the name of the account, its current balance, its interest rate, amount you've invested this year, amount you've withdrawn this year, and the expected annual rate of return");
-                    System.out.println("Name of account, $ current balance, % interest rate, $ invested this year, $ withdrawn this year, % annual rate of return");
+                    System.out.println("Please enter the name of the account, its current balance, its interest rate, amount you've invested this year, amount you've withdrawn this year, and the expected annual rate of return separated by a comma");
+                    System.out.println("|Name of account | $ current balance | % interest rate | $ invested this year | $ withdrawn this year | % annual rate of return|");
                     double TFSATotal = 0.0;
                     Double TFSABalance = assets.setTFSA(TFSATotal);
                     tfsaLimitTable.setTFSAALHM();
@@ -101,7 +101,11 @@ public class Assets {
                     assetsTotal += TFSABalance;
                     break;
                 case 6:
-                    System.out.println("Please enter the name of the account, its current balance, and the annual rate of return while you're working");
+                    System.out.println("Please enter the name of the account, its current balance, and the expected annual rate of return separated by a comma");
+                    Double RRSPTotal = 0.0;
+                    Double RRSPBalance = assets.setRRSP(RRSPTotal);
+                    assetsTotal += RRSPBalance;
+                    break;
             }
         }
         return assetsTotal;
@@ -214,9 +218,23 @@ public class Assets {
         tfsa = new TFSA(assetsAccName,assetsAccBalance, assetsInterest, TFSAAmtDeposited, TFSAAmtWithdrawn, TFSAROR);
         hmAssets.put(tfsa.getAccName(), tfsa.getCurrentBalance());
         hmInterest.put(tfsa.getAccName(), tfsa.getInterest());
-        hmRoR.put(tfsa.getAccName(), tfsa.getAmtROR());
+        hmRoR.put(tfsa.getAccName(), tfsa.getTFSAROR());
         TFSADepositedCurr = TFSAAmtDeposited;
         TFSAWithdrawnCurr = TFSAAmtWithdrawn;
+        assetsTotal += assetsAccBalance;
+        return assetsTotal;
+    }
+
+    public static Double setRRSP(Double assetsTotal){
+        RRSP rrsp;
+        String assetsInput = scanner.nextLine();
+        String [] assetsSplit = assetsInput.replaceAll("\\s", "").replaceAll("\\$", "").replaceAll("\\%", "").split(",");
+        String assetsAccName = assetsSplit[0] + " " + "- RRSP Account";
+        Double assetsAccBalance = Double.parseDouble(assetsSplit[1]);
+        Double RRSPROR = Double.parseDouble(assetsSplit[2]);
+        rrsp = new RRSP(assetsAccName, assetsAccBalance, RRSPROR);
+        hmAssets.put(rrsp.getAccName(), rrsp.getCurrentBalance());
+        hmRoR.put(rrsp.getAccName(), rrsp.RRSPROR);
         assetsTotal += assetsAccBalance;
         return assetsTotal;
     }
