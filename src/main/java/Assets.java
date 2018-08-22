@@ -11,6 +11,7 @@ public class Assets {
     private static HashMap <String, Double> hmAssets = new HashMap();
     private static HashMap <String, Double> hmInterest = new HashMap();
     private static HashMap <String, Double> hmFixedTerm = new HashMap();
+    private static HashMap <String, Double> hmRoR = new HashMap();
     private static Double TFSADepositedCurr;
     private static Double TFSAWithdrawnCurr;
     private static Double TFSAAvailableContributionRoomCurr;
@@ -38,6 +39,7 @@ public class Assets {
         assets.displayAssets();
         assets.displayInterests();
         assets.displayFixedTermLength();
+        assets.displayRoR();
 
     }
 
@@ -87,16 +89,19 @@ public class Assets {
                 case 5:
                     AgeCalculator ageCalculator = new AgeCalculator();
                     TFSAAnnualLimitHM tfsaLimitTable = new TFSAAnnualLimitHM();
-                    System.out.println("Please enter the name of the account, its current balance, its interest rate, amount you've invested this year, and amount you've withdrawn this year");
+                    System.out.println("Please enter the name of the account, its current balance, its interest rate, amount you've invested this year, amount you've withdrawn this year, and the expected annual rate of return");
+                    System.out.println("Name of account, $ current balance, % interest rate, $ invested this year, $ withdrawn this year, % annual rate of return");
                     double TFSATotal = 0.0;
                     Double TFSABalance = assets.setTFSA(TFSATotal);
                     tfsaLimitTable.setTFSAALHM();
                     String yearEighteen = Integer.toString(ageCalculator.yearEighteen(clientAge));
                     Double TFSACumulativeLimit = tfsaLimitTable.getTFSAValue(yearEighteen, "Cumulative");
-                    TFSAAvailableContributionRoomCurr = TFSACumulativeLimit-TFSABalance;
+                    TFSAAvailableContributionRoomCurr = TFSACumulativeLimit - TFSABalance;
                     TFSAAvailableContributionRoomNext = TFSAAvailableContributionRoomCurr + tfsaLimitTable.getTFSAValue(yearEighteen, "Annual") + TFSAWithdrawnCurr;
                     assetsTotal += TFSABalance;
                     break;
+                case 6:
+                    System.out.println("Please enter the name of the account, its current balance, and the annual rate of return while you're working");
             }
         }
         return assetsTotal;
@@ -122,6 +127,14 @@ public class Assets {
         System.out.println();
         for(HashMap.Entry <String, Double> entry : hmFixedTerm.entrySet()){
             System.out.println(entry.getKey() + ": " + entry.getValue() + " years");
+        }
+    }
+
+    public static void displayRoR(){
+        System.out.println("\n----------Rate of Returns---------- ");
+        System.out.println();
+        for(HashMap.Entry <String, Double> entry : hmRoR.entrySet()){
+            System.out.println(entry.getKey() + ": %" + entry.getValue());
         }
     }
 
@@ -191,15 +204,17 @@ public class Assets {
     public static Double setTFSA(Double assetsTotal ){
         TFSA tfsa;
         String assetsInput = scanner.nextLine();
-        String [] assetsSplit = assetsInput.replaceAll("\\s", "").split(",");
+        String [] assetsSplit = assetsInput.replaceAll("\\s", "").replaceAll("\\$", "").replaceAll("\\%", "").split(",");
         String assetsAccName = assetsSplit[0] + " " + "- TFSA Account";
         Double assetsAccBalance = Double.parseDouble(assetsSplit[1]);
         Double assetsInterest = Double.parseDouble(assetsSplit[2]);
         Double TFSAAmtDeposited = Double.parseDouble(assetsSplit[3]);
         Double TFSAAmtWithdrawn = Double.parseDouble(assetsSplit[4]);
-        tfsa = new TFSA(assetsAccName,assetsAccBalance, assetsInterest, TFSAAmtDeposited, TFSAAmtWithdrawn);
+        Double TFSAROR = Double.parseDouble(assetsSplit[5]);
+        tfsa = new TFSA(assetsAccName,assetsAccBalance, assetsInterest, TFSAAmtDeposited, TFSAAmtWithdrawn, TFSAROR);
         hmAssets.put(tfsa.getAccName(), tfsa.getCurrentBalance());
         hmInterest.put(tfsa.getAccName(), tfsa.getInterest());
+        hmRoR.put(tfsa.getAccName(), tfsa.getAmtROR());
         TFSADepositedCurr = TFSAAmtDeposited;
         TFSAWithdrawnCurr = TFSAAmtWithdrawn;
         assetsTotal += assetsAccBalance;

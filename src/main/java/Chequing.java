@@ -5,16 +5,16 @@ class Chequing {
     String accName;
     Double currentBalance;
 
-    public Chequing(String accName, Double currentBalance){
+    public Chequing(String accName, Double currentBalance) {
         this.accName = accName;
         this.currentBalance = currentBalance;
     }
 
-    public String getAccName(){
+    public String getAccName() {
         return accName;
     }
 
-    public Double getCurrentBalance(){
+    public Double getCurrentBalance() {
         return currentBalance;
     }
 }
@@ -22,44 +22,53 @@ class Chequing {
 class Savings extends Chequing {
 
     public Double interest;
+
     public Savings(String accName, Double currentBalance, Double interest) {
         super(accName, currentBalance);
         this.interest = interest;
     }
 
-    public Double getInterest(){
+    public Double getInterest() {
         return interest;
     }
 }
 
-class GIC extends Savings{
+class GIC extends Savings {
 
     public Double fixedTermLength;
-    public GIC(String accName, Double currentBalance, Double interest, Double fixedTermLength){
-        super(accName,currentBalance,interest);
+
+    public GIC(String accName, Double currentBalance, Double interest, Double fixedTermLength) {
+        super(accName, currentBalance, interest);
         this.fixedTermLength = fixedTermLength;
     }
 
-    public Double getFixedTermLength(){
+    public Double getFixedTermLength() {
         return fixedTermLength;
     }
 }
 
-class TFSA extends Savings{
+class TFSA extends Savings {
     public Double amtWithdrawn;
     public Double amtDeposited;
-    public TFSA(String accName, Double currentBalance, Double interest, Double amtDeposited, Double amtWithdrawn){
-        super(accName,currentBalance,interest);
+    public Double amtROR;
+
+    public TFSA(String accName, Double currentBalance, Double interest, Double amtDeposited, Double amtWithdrawn, Double amtROR) {
+        super(accName, currentBalance, interest);
         this.amtDeposited = amtDeposited;
         this.amtWithdrawn = amtWithdrawn;
+        this.amtROR = amtROR;
     }
 
-    public Double getAmtDeposited(){
+    public Double getAmtDeposited() {
         return amtDeposited;
     }
 
-    public Double getAmtWithdrawn(){
+    public Double getAmtWithdrawn() {
         return amtWithdrawn;
+    }
+
+    public Double getAmtROR() {
+        return amtROR;
     }
 
 }
