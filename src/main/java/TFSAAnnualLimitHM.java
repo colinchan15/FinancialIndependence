@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class TFSAAnnualLimitHM {
 
-        private static Map<String, ArrayList<Integer>> tfsaALHM = new HashMap();
+        private static Map<String, ArrayList<Double>> tfsaALHM = new HashMap();
 
         public static void main (String[]args){
             TFSAAnnualLimitHM tfsa = new TFSAAnnualLimitHM();
@@ -15,144 +15,144 @@ public class TFSAAnnualLimitHM {
             System.out.println(tfsa.getTFSAValue("2018", "Cumulative"));
         }
 
-        public static int getTFSAValue (String year, String AnnOrCum) {
+        public static Double getTFSAValue (String year, String AnnOrCum) {
             TFSAAnnualLimitHM tfsa = new TFSAAnnualLimitHM();
             tfsa.setTFSAALHM();
-            int temp = 0;
+            Double temp = 0.0;
 
             if (year.equals("2009")) {
                 if (AnnOrCum.equals("Annual")) {
                     ArrayList oNine = tfsaALHM.get("2009");
-                    temp = (int) oNine.get(0);
+                    temp = (Double) oNine.get(0);
                 } else if (AnnOrCum.equals("Cumulative")) {
                     ArrayList oNine = tfsaALHM.get("2009");
-                    temp = (int) oNine.get(1);
+                    temp = (Double) oNine.get(1);
                 }
             } else if (year.equals("2010")) {
                 if (AnnOrCum.equals("Annual")) {
                     ArrayList ten = tfsaALHM.get("2010");
-                    temp = (int) ten.get(0);
+                    temp = (Double) ten.get(0);
                 } else if (AnnOrCum.equals("Cumulative")) {
                     ArrayList ten = tfsaALHM.get("2010");
-                    temp = (int) ten.get(1);
+                    temp = (Double) ten.get(1);
                 }
             }else if (year.equals("2011")) {
                 if (AnnOrCum.equals("Annual")) {
                     ArrayList eleven = tfsaALHM.get("2011");
-                    temp = (int) eleven.get(0);
+                    temp = (Double) eleven.get(0);
                 } else if (AnnOrCum.equals("Cumulative")) {
                     ArrayList eleven = tfsaALHM.get("2011");
-                    temp = (int) eleven.get(1);
+                    temp = (Double) eleven.get(1);
                 }
             }else if (year.equals("2012")) {
                 if (AnnOrCum.equals("Annual")) {
                     ArrayList twelve = tfsaALHM.get("2012");
-                    temp = (int) twelve.get(0);
+                    temp = (Double) twelve.get(0);
                 } else if (AnnOrCum.equals("Cumulative")) {
                     ArrayList twelve = tfsaALHM.get("2012");
-                    temp = (int) twelve.get(1);
+                    temp = (Double) twelve.get(1);
                 }
             }else if (year.equals("2013")) {
                 if (AnnOrCum.equals("Annual")) {
                     ArrayList thirteen = tfsaALHM.get("2013");
-                    temp = (int) thirteen.get(0);
+                    temp = (Double) thirteen.get(0);
                 } else if (AnnOrCum.equals("Cumulative")) {
                     ArrayList thirteen = tfsaALHM.get("2013");
-                    temp = (int) thirteen.get(1);
+                    temp = (Double) thirteen.get(1);
                 }
             }else if (year.equals("2014")) {
                 if (AnnOrCum.equals("Annual")) {
                     ArrayList thirteen = tfsaALHM.get("2014");
-                    temp = (int) thirteen.get(0);
+                    temp = (Double) thirteen.get(0);
                 } else if (AnnOrCum.equals("Cumulative")) {
                     ArrayList thirteen = tfsaALHM.get("2014");
-                    temp = (int) thirteen.get(1);
+                    temp = (Double) thirteen.get(1);
                 }
             }else if (year.equals("2015")) {
                 if (AnnOrCum.equals("Annual")) {
                     ArrayList fifteen = tfsaALHM.get("2015");
-                    temp = (int) fifteen.get(0);
+                    temp = (Double) fifteen.get(0);
                 } else if (AnnOrCum.equals("Cumulative")) {
                     ArrayList fifteen = tfsaALHM.get("2015");
-                    temp = (int) fifteen.get(1);
+                    temp = (Double) fifteen.get(1);
                 }
             }else if (year.equals("2016")) {
                 if (AnnOrCum.equals("Annual")) {
                     ArrayList sixteen = tfsaALHM.get("2016");
-                    temp = (int) sixteen.get(0);
+                    temp = (Double) sixteen.get(0);
                 } else if (AnnOrCum.equals("Cumulative")) {
                     ArrayList sixteen = tfsaALHM.get("2016");
-                    temp = (int) sixteen.get(1);
+                    temp = (Double) sixteen.get(1);
                 }
             }else if (year.equals("2017")) {
                 if (AnnOrCum.equals("Annual")) {
                     ArrayList seventeen = tfsaALHM.get("2017");
-                    temp = (int) seventeen.get(0);
+                    temp = (Double) seventeen.get(0);
                 } else if (AnnOrCum.equals("Cumulative")) {
                     ArrayList seventeen = tfsaALHM.get("2017");
-                    temp = (int) seventeen.get(1);
+                    temp = (Double) seventeen.get(1);
                 }
             }else if (year.equals("2018")) {
                 if (AnnOrCum.equals("Annual")) {
                     ArrayList eighteen = tfsaALHM.get("2018");
-                    temp = (int) eighteen.get(0);
+                    temp = (Double) eighteen.get(0);
                 } else if (AnnOrCum.equals("Cumulative")) {
                     ArrayList eighteen = tfsaALHM.get("2018");
-                    temp = (int) eighteen.get(1);
+                    temp = (Double) eighteen.get(1);
                 }
             }
             return temp;
         }
 
         public void setTFSAALHM(){
-            ArrayList<Integer> oNine = new ArrayList();
-            oNine.add(5000);
-            oNine.add(5000);
+            ArrayList<Double> oNine = new ArrayList();
+            oNine.add(5000.0);
+            oNine.add(57500.0);
             tfsaALHM.put("2009", oNine);
 
-            ArrayList<Integer> ten = new ArrayList();
-            ten.add(5000);
-            ten.add(10000);
+            ArrayList<Double> ten = new ArrayList();
+            ten.add(5000.0);
+            ten.add(52500.0);
             tfsaALHM.put("2010", ten);
 
-            ArrayList<Integer> eleven = new ArrayList();
-            eleven.add(5000);
-            eleven.add(15000);
+            ArrayList<Double> eleven = new ArrayList();
+            eleven.add(5000.0);
+            eleven.add(47500.0);
             tfsaALHM.put("2011", eleven);
 
-            ArrayList<Integer> twelve = new ArrayList();
-            twelve.add(5000);
-            twelve.add(20000);
+            ArrayList<Double> twelve = new ArrayList();
+            twelve.add(5000.0);
+            twelve.add(42500.0);
             tfsaALHM.put("2012", twelve);
 
-            ArrayList<Integer> thirteen = new ArrayList();
-            thirteen.add(5500);
-            thirteen.add(25500);
+            ArrayList<Double> thirteen = new ArrayList();
+            thirteen.add(5500.0);
+            thirteen.add(37500.0);
             tfsaALHM.put("2013", thirteen);
 
-            ArrayList<Integer> fourteen = new ArrayList();
-            fourteen.add(5500);
-            fourteen.add(31000);
+            ArrayList<Double> fourteen = new ArrayList();
+            fourteen.add(5500.0);
+            fourteen.add(32000.0);
             tfsaALHM.put("2014", fourteen);
 
-            ArrayList<Integer> fifteen = new ArrayList();
-            fifteen.add(10000);
-            fifteen.add(41000);
+            ArrayList<Double> fifteen = new ArrayList();
+            fifteen.add(10000.0);
+            fifteen.add(26500.0);
             tfsaALHM.put("2015", fifteen);
 
-            ArrayList<Integer> sixteen = new ArrayList();
-            sixteen.add(5500);
-            sixteen.add(46500);
+            ArrayList<Double> sixteen = new ArrayList();
+            sixteen.add(5500.0);
+            sixteen.add(16500.0);
             tfsaALHM.put("2016", sixteen);
 
-            ArrayList<Integer> seventeen = new ArrayList();
-            seventeen.add(5500);
-            seventeen.add(52000);
+            ArrayList<Double> seventeen = new ArrayList();
+            seventeen.add(5500.0);
+            seventeen.add(11000.0);
             tfsaALHM.put("2017", seventeen);
 
-            ArrayList<Integer> eighteen = new ArrayList();
-            eighteen.add(5500);
-            eighteen.add(57500);
+            ArrayList<Double> eighteen = new ArrayList();
+            eighteen.add(5500.0);
+            eighteen.add(5500.0);
             tfsaALHM.put("2018", eighteen);
         }
 }

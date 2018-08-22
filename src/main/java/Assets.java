@@ -11,6 +11,10 @@ public class Assets {
     private static HashMap <String, Double> hmAssets = new HashMap();
     private static HashMap <String, Double> hmInterest = new HashMap();
     private static HashMap <String, Double> hmFixedTerm = new HashMap();
+    private static Double TFSADepositedCurr;
+    private static Double TFSAWithdrawnCurr;
+    private static Double TFSAAvailableContributionRoomCurr;
+    private static Double TFSAAvailableContributionRoomNext;
 
     public static void main(String[] args) {
 //        main.java.Assets assets = new main.java.Assets();
@@ -22,11 +26,14 @@ public class Assets {
 //        linkedList.add(2);
 //        linkedList.add(3);
 //        linkedList.add(4);
+        linkedList.add(5);
 
         System.out.println("What is your birth date?");
         String birthDate = scanner.nextLine();
         int clientAge = ageCalculator.getAge(birthDate);
-        System.out.println(assets.assets(linkedList, clientAge)); // change birthDate to actual date
+        System.out.println(assets.assets(linkedList, clientAge));
+        System.out.println(TFSAAvailableContributionRoomCurr);
+        System.out.println(TFSAAvailableContributionRoomNext);
 
         assets.displayAssets();
         assets.displayInterests();
@@ -38,6 +45,7 @@ public class Assets {
         main.java.Assets assets = new main.java.Assets();
         double assetsTotal = 0;
         System.out.println("\nAssets inflow and outflow inputting section");
+        System.out.println();
         for (int i = 0; i < linkedList.size(); i++) {
             switch (linkedList.get(i)) {
                 case 1:
@@ -77,10 +85,17 @@ public class Assets {
                     assetsTotal += GICBalance;
                     break;
                 case 5:
+                    AgeCalculator ageCalculator = new AgeCalculator();
+                    TFSAAnnualLimitHM tfsaLimitTable = new TFSAAnnualLimitHM();
                     System.out.println("Please enter the name of the account, its current balance, its interest rate, amount you've invested this year, and amount you've withdrawn this year");
                     double TFSATotal = 0.0;
                     Double TFSABalance = assets.setTFSA(TFSATotal);
-//                    assetsTotal += TFSABalance;
+                    tfsaLimitTable.setTFSAALHM();
+                    String yearEighteen = Integer.toString(ageCalculator.yearEighteen(clientAge));
+                    Double TFSACumulativeLimit = tfsaLimitTable.getTFSAValue(yearEighteen, "Cumulative");
+                    TFSAAvailableContributionRoomCurr = TFSACumulativeLimit-TFSABalance;
+                    TFSAAvailableContributionRoomNext = TFSAAvailableContributionRoomCurr + tfsaLimitTable.getTFSAValue(yearEighteen, "Annual") + TFSAWithdrawnCurr;
+                    assetsTotal += TFSABalance;
                     break;
             }
         }
@@ -183,7 +198,10 @@ public class Assets {
         Double TFSAAmtDeposited = Double.parseDouble(assetsSplit[3]);
         Double TFSAAmtWithdrawn = Double.parseDouble(assetsSplit[4]);
         tfsa = new TFSA(assetsAccName,assetsAccBalance, assetsInterest, TFSAAmtDeposited, TFSAAmtWithdrawn);
-
+        hmAssets.put(tfsa.getAccName(), tfsa.getCurrentBalance());
+        hmInterest.put(tfsa.getAccName(), tfsa.getInterest());
+        TFSADepositedCurr = TFSAAmtDeposited;
+        TFSAWithdrawnCurr = TFSAAmtWithdrawn;
         assetsTotal += assetsAccBalance;
         return assetsTotal;
     }

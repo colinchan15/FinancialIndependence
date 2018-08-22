@@ -2,6 +2,7 @@ package main.java;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Calendar;
 
 public class AgeCalculator {
 
@@ -24,5 +25,12 @@ public class AgeCalculator {
     public int getAge(String birthDate){
         String currentDate = getCurrentDate();
         return ageCalculator(birthDate, currentDate);
+    }
+
+    public int yearEighteen (int clientAge){
+        int yearsAfterEighteen = clientAge-18;
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        int yearEighteen = currentYear-yearsAfterEighteen;
+        return yearEighteen;
     }
 }
