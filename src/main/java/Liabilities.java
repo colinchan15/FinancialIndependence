@@ -11,7 +11,7 @@ public class Liabilities {
     private static Double OSAPGrants;
     private static Double OSAPFederalLoans;
     private static Double OSAPProvincialLoans;
-    private static Double OSAPCalculatedInterest;
+    private static Double OSAPCalculatedMonthlyInterest;
     private static Double LOCBalance;
     private static Double LOCInterest;
     private static Double primeRate;
@@ -43,8 +43,8 @@ public class Liabilities {
 
                     OSAPFederalLoans = OSAPBalanceFun*0.7;
                     OSAPProvincialLoans = OSAPBalanceFun*0.3;
-                    OSAPCalculatedInterest = (OSAPFederalLoans * ((primeRate+2.5)/100)+1) + (OSAPProvincialLoans * ((primeRate + 1.0)/100)+1);
-                    System.out.println(OSAPCalculatedInterest);
+                    OSAPCalculatedMonthlyInterest = ((OSAPFederalLoans * ((primeRate+2.5)/100)) + (OSAPProvincialLoans * ((primeRate + 1.0)/100))/12);
+                    System.out.println(OSAPCalculatedMonthlyInterest);
 
 
 
