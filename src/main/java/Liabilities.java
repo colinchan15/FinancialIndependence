@@ -43,7 +43,7 @@ public class Liabilities {
 
                     OSAPFederalLoans = OSAPBalanceFun*0.7;
                     OSAPProvincialLoans = OSAPBalanceFun*0.3;
-                    OSAPCalculatedMonthlyInterest = ((OSAPFederalLoans * ((primeRate+2.5)/100)) + (OSAPProvincialLoans * ((primeRate + 1.0)/100))/12);
+                    OSAPCalculatedMonthlyInterest = (((OSAPFederalLoans * ((primeRate+2.5)/100)) + (OSAPProvincialLoans * ((primeRate + 1.0)/100)))/12);
                     System.out.println(OSAPCalculatedMonthlyInterest);
 
 
