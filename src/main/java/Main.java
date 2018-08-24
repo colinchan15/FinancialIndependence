@@ -24,6 +24,7 @@ public class Main {
 //        String[] split = name.split(" ");
         System.out.println("When were you born? (Please input in this format: YYYY-MM-DD");
         String birthDate = scanner.nextLine();
+        int clientAge = AgeCalculator.getAge(birthDate);
 
 //
 //        System.out.println("Welcome to your budget " + split[0]);
@@ -154,15 +155,25 @@ public class Main {
         // test if TEBudget.java is working
         double TEtotal = TEBudget.budgeting(TEllist);
 
+        // test if Assets.java is working
+        Double assetsTotal = Assets.assets(assetList, clientAge);
+
+        // test if Liabilities.java is working
+        Double liabilitiesTotal = Liabilities.liabilities(liabilitiesList);
+
         IOBudget.displayIOBudget();
         TEBudget.displayTEBudget();
 
         double budgetTotal = IOtotal + TEtotal;
         System.out.println("\nIn total, you've budgeted for this month:  $" + budgetTotal);
 
-        // test if llinkedlists are working
-//        System.out.println(IOllist);
-//        System.out.println(TEllist);
+        System.out.println("\nHere is a report of your current assets");
+        Assets.displayAssets();
+        Assets.displayInterests();
+        Assets.displayFixedTermLength();
+        Assets.displayRoR();
+
+        System.out.println("Here is a total of your current assets: " + assetsTotal);
 
 
     }

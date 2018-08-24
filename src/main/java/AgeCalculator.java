@@ -7,7 +7,7 @@ import java.util.Calendar;
 // standard age calculator mainly used for getting TFSA contribution limits
 public class AgeCalculator {
 
-    public int ageCalculator (String birthDate, String currentDate){
+    public static int ageCalculator (String birthDate, String currentDate){
         LocalDate birthDateParsed = LocalDate.parse(birthDate);
         LocalDate currentDateParsed = LocalDate.parse(currentDate);
         if ((birthDateParsed != null) && (currentDateParsed != null)) {
@@ -17,13 +17,13 @@ public class AgeCalculator {
         }
     }
 
-    public String getCurrentDate (){
+    public static String getCurrentDate (){
         long millis=System.currentTimeMillis();
         java.sql.Date date=new java.sql.Date(millis);
         return date.toString();
     }
 
-    public int getAge(String birthDate){
+    public static int getAge(String birthDate){
         String currentDate = getCurrentDate();
         return ageCalculator(birthDate, currentDate);
     }

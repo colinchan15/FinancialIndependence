@@ -9,14 +9,18 @@ public class Liabilities {
     private static Double OSAPFunding;
     private static Double OSAPLoans;
     private static Double OSAPGrants;
+    private static Double OSAPFederalLoans;
+    private static Double OSAPProvincialLoans;
+    private static Double OSAPCalculatedInterest;
     private static Double LOCBalance;
     private static Double LOCInterest;
+    private static Double primeRate;
 
     public static void main (String[]args){
         Liabilities lb = new Liabilities();
         LinkedList linkedList = new LinkedList();
         linkedList.add(1);
-        linkedList.add(2);
+//        linkedList.add(2);
         System.out.println(lb.liabilities(linkedList));
     }
 
@@ -31,8 +35,20 @@ public class Liabilities {
                     double OSAPFundVar = scanner.nextDouble();
                     System.out.println("How much of this funding was made up of grants, bursaries and other assets?");
                     double OSAPGrantVar = scanner.nextDouble();
-                    double OSAPBalanceFun = liabilities.setOSAP(OSAPFundVar, OSAPGrantVar);
-                    liabilitiesTotal += OSAPBalanceFun;
+                    System.out.println("Are you applying for the six month grace period? (Type y or n)");
+                    String sixMonthGracePeriod = scanner.next();
+                    double OSAPBalanceFun = liabilities.setOSAP(OSAPFundVar, OSAPGrantVar, liabilities.sixMonthGracePeriodChoice(sixMonthGracePeriod));
+                    System.out.println("What is the prime rate set by the Bank of Canada?");
+                    liabilities.setPrimeRate(scanner.nextDouble());
+
+                    OSAPFederalLoans = OSAPBalanceFun*0.7;
+                    OSAPProvincialLoans = OSAPBalanceFun*0.3;
+                    OSAPCalculatedInterest = (OSAPFederalLoans * ((primeRate+2.5)/100)+1) + (OSAPProvincialLoans * ((primeRate + 1.0)/100)+1);
+                    System.out.println(OSAPCalculatedInterest);
+
+
+
+                    liabilitiesTotal += OSAPBalanceFun ;
                     break;
                 case 2:
                     System.out.println("To date, how much have you borrowed from your student line of credit?");
@@ -47,16 +63,29 @@ public class Liabilities {
         return liabilitiesTotal;
     }
 
-    public static double setOSAP (double funding, double grants){
+    public static double setOSAP (double funding, double grants, boolean sixMonthGrace){
         OSAPLoans = funding - grants;
         OSAPGrants = grants;
+        System.out.println(sixMonthGrace);
         return OSAPLoans;
+    }
+
+    public static boolean sixMonthGracePeriodChoice(String smgp){
+        return smgp.equals("y") ? true : false;
     }
 
     public static double setLOC(double balance, double interest){
         LOCBalance = balance;
         LOCInterest = interest;
         return LOCBalance;
+    }
+
+    public static void setPrimeRate (double primeRateSet){
+        primeRate = primeRateSet;
+    }
+
+    public static Double getPrimeRate(){
+        return primeRate;
     }
 
 }
