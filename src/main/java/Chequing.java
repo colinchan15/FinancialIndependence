@@ -85,3 +85,9 @@ class RRSP extends Chequing{
         return RRSPROR;
     }
 }
+
+class OSAP extends Savings{
+    public OSAP (String accName, Double currentBalance, Double interest){
+        super(accName, currentBalance, interest);
+    }
+}

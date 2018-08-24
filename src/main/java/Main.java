@@ -65,9 +65,9 @@ public class Main {
 
                 case 2:
                     System.out.println("\nLiabilities\n");
-                    System.out.println("Please select all assets you would like to include in your budget. If done, or none, enter -1");
-                    System.out.println("1. Line of Credit");
-                    System.out.println("2. Mortgage");
+                    System.out.println("Please select all liabilities you would like to include in your budget. If done, or none, enter -1");
+                    System.out.println("1. Student Loans");
+                    System.out.println("2. Student Line of Credit");
 
                     do {
                         int liabilitiesChoice = scanner.nextInt();

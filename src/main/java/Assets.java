@@ -57,8 +57,8 @@ public class Assets {
                     int chequingAccNum = scanner.nextInt();
                     scanner.nextLine();
                     System.out.println("Please enter the name of the account and its current balance separated by a comma");
-                    Double chequingTotal = 0.0;
-                    Double chequingBalance = assets.setChequing(chequingAccNum,chequingTotal);
+                    double chequingTotal = 0.0;
+                    double chequingBalance = assets.setChequing(chequingAccNum,chequingTotal);
                     assetsTotal += chequingBalance;
                     break;
                 case 2:
@@ -67,7 +67,7 @@ public class Assets {
                     scanner.nextLine();
                     System.out.println("Please enter the name of the account, its current balance, and its interest rate separated by a comma");
                     double savingsTotal = 0.0;
-                    Double savingsBalance = assets.setSavings(savingsAccNum, savingsTotal, false);
+                    double savingsBalance = assets.setSavings(savingsAccNum, savingsTotal, false);
                     assetsTotal += savingsBalance;
                     break;
                 case 3:
@@ -76,7 +76,7 @@ public class Assets {
                     scanner.nextLine();
                     System.out.println("Please enter the name of the account, its current balance, and its interest rate separated by a comma");
                     double HISavingsTotal = 0.0;
-                    Double HISavingsBalance = assets.setSavings(HISavingsAccNum, HISavingsTotal, true);
+                    double HISavingsBalance = assets.setSavings(HISavingsAccNum, HISavingsTotal, true);
                     assetsTotal += HISavingsBalance;
                     break;
                 case 4:
@@ -85,7 +85,7 @@ public class Assets {
                     scanner.nextLine();
                     System.out.println("Please enter the name of the account, its current balance, its interest rate, and length of fixed term (in years) separated by a comma");
                     double GICTotal = 0.0;
-                    Double GICBalance = assets.setGIC(GICAccNum, GICTotal);
+                    double GICBalance = assets.setGIC(GICAccNum, GICTotal);
                     assetsTotal += GICBalance;
                     break;
                 case 5:
@@ -94,18 +94,18 @@ public class Assets {
                     System.out.println("Please enter the name of the account, its current balance, its interest rate, amount you've invested this year, amount you've withdrawn this year, and the expected annual rate of return separated by a comma");
                     System.out.println("|Name of account | $ current balance | % interest rate | $ invested this year | $ withdrawn this year | % annual rate of return|");
                     double TFSATotal = 0.0;
-                    Double TFSABalance = assets.setTFSA(TFSATotal);
+                    double TFSABalance = assets.setTFSA(TFSATotal);
                     tfsaLimitTable.setTFSAALHM();
                     String yearEighteen = Integer.toString(ageCalculator.yearEighteen(clientAge));
-                    Double TFSACumulativeLimit = tfsaLimitTable.getTFSAValue(yearEighteen, "Cumulative");
+                    double TFSACumulativeLimit = tfsaLimitTable.getTFSAValue(yearEighteen, "Cumulative");
                     TFSAAvailableContributionRoomCurr = TFSACumulativeLimit - TFSABalance;
                     TFSAAvailableContributionRoomNext = TFSAAvailableContributionRoomCurr + tfsaLimitTable.getTFSAValue(yearEighteen, "Annual") + TFSAWithdrawnCurr;
                     assetsTotal += TFSABalance;
                     break;
                 case 6:
                     System.out.println("Please enter the name of the account, its current balance, and the expected annual rate of return separated by a comma");
-                    Double RRSPTotal = 0.0;
-                    Double RRSPBalance = assets.setRRSP(RRSPTotal);
+                    double RRSPTotal = 0.0;
+                    double RRSPBalance = assets.setRRSP(RRSPTotal);
                     assetsTotal += RRSPBalance;
                     break;
             }
@@ -155,7 +155,7 @@ public class Assets {
             String assetsInput = scanner.nextLine();
             String [] assetsSplit = assetsInput.replaceAll("\\s", "").replaceAll("\\$", "").replaceAll("\\%", "").split(",");
             String assetsAccName = assetsSplit[0] + " " + "- Chequing Account";
-            Double assetsAccBalance = Double.parseDouble(assetsSplit[1]);
+            double assetsAccBalance = Double.parseDouble(assetsSplit[1]);
             setChequing = new Chequing(assetsAccName, assetsAccBalance);
             hmAssets.put(setChequing.getAccName(), setChequing.getCurrentBalance());
             assetsTotal += assetsAccBalance;
@@ -196,9 +196,9 @@ public class Assets {
             String assetsInput = scanner.nextLine();
             String [] assetsSplit = assetsInput.replaceAll("\\s", "").replaceAll("\\$", "").replaceAll("\\%", "").split(",");
             String assetsAccName = assetsSplit[0] + " " + "- GIC Account";
-            Double assetsAccBalance = Double.parseDouble(assetsSplit[1]);
-            Double assetsInterest = Double.parseDouble(assetsSplit[2]);
-            Double assetsFixedTermLength = Double.parseDouble(assetsSplit[3]);
+            double assetsAccBalance = Double.parseDouble(assetsSplit[1]);
+            double assetsInterest = Double.parseDouble(assetsSplit[2]);
+            double assetsFixedTermLength = Double.parseDouble(assetsSplit[3]);
             gic = new GIC(assetsAccName, assetsAccBalance, assetsInterest, assetsFixedTermLength);
             hmAssets.put(gic.getAccName(), gic.getCurrentBalance());
             hmInterest.put(gic.getAccName(), gic.getInterest());
@@ -214,11 +214,11 @@ public class Assets {
         String assetsInput = scanner.nextLine();
         String [] assetsSplit = assetsInput.replaceAll("\\s", "").replaceAll("\\$", "").replaceAll("\\%", "").split(",");
         String assetsAccName = assetsSplit[0] + " " + "- TFSA Account";
-        Double assetsAccBalance = Double.parseDouble(assetsSplit[1]);
-        Double assetsInterest = Double.parseDouble(assetsSplit[2]);
-        Double TFSAAmtDeposited = Double.parseDouble(assetsSplit[3]);
-        Double TFSAAmtWithdrawn = Double.parseDouble(assetsSplit[4]);
-        Double TFSAROR = Double.parseDouble(assetsSplit[5]);
+        double assetsAccBalance = Double.parseDouble(assetsSplit[1]);
+        double assetsInterest = Double.parseDouble(assetsSplit[2]);
+        double TFSAAmtDeposited = Double.parseDouble(assetsSplit[3]);
+        double TFSAAmtWithdrawn = Double.parseDouble(assetsSplit[4]);
+        double TFSAROR = Double.parseDouble(assetsSplit[5]);
         tfsa = new TFSA(assetsAccName,assetsAccBalance, assetsInterest, TFSAAmtDeposited, TFSAAmtWithdrawn, TFSAROR);
         hmAssets.put(tfsa.getAccName(), tfsa.getCurrentBalance());
         hmInterest.put(tfsa.getAccName(), tfsa.getInterest());
@@ -234,8 +234,8 @@ public class Assets {
         String assetsInput = scanner.nextLine();
         String [] assetsSplit = assetsInput.replaceAll("\\s", "").replaceAll("\\$", "").replaceAll("\\%", "").split(",");
         String assetsAccName = assetsSplit[0] + " " + "- RRSP Account";
-        Double assetsAccBalance = Double.parseDouble(assetsSplit[1]);
-        Double RRSPROR = Double.parseDouble(assetsSplit[2]);
+        double assetsAccBalance = Double.parseDouble(assetsSplit[1]);
+        double RRSPROR = Double.parseDouble(assetsSplit[2]);
         rrsp = new RRSP(assetsAccName, assetsAccBalance, RRSPROR);
         hmAssets.put(rrsp.getAccName(), rrsp.getCurrentBalance());
         hmRoR.put(rrsp.getAccName(), rrsp.RRSPROR);
