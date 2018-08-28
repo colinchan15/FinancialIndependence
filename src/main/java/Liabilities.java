@@ -11,6 +11,7 @@ public class Liabilities {
     private static Double OSAPGrants;
     private static Double OSAPFederalLoans;
     private static Double OSAPProvincialLoans;
+    private static Double OSAPMonthlyPayment;
     private static Double OSAPCalculatedMonthlyInterest;
     private static Double LOCBalance;
     private static Double LOCInterest;
@@ -40,11 +41,35 @@ public class Liabilities {
                     double OSAPBalanceFun = liabilities.setOSAP(OSAPFundVar, OSAPGrantVar, liabilities.sixMonthGracePeriodChoice(sixMonthGracePeriod));
                     System.out.println("What is the prime rate set by the Bank of Canada?");
                     liabilities.setPrimeRate(scanner.nextDouble());
+                    System.out.println("Over how many months do you want to take to pay off the loans?");
+                    int months = scanner.nextInt();
 
-                    OSAPFederalLoans = OSAPBalanceFun*0.7;
+                    OSAPFederalLoans = OSAPBalanceFun; // change this back to *0.7 once everything fixed
                     OSAPProvincialLoans = OSAPBalanceFun*0.3;
-                    OSAPCalculatedMonthlyInterest = (((OSAPFederalLoans * ((primeRate+2.5)/100)) + (OSAPProvincialLoans * ((primeRate + 1.0)/100)))/12);
-                    System.out.println(OSAPCalculatedMonthlyInterest);
+                    double count = 0;
+
+                    // loan payment formula - FEDERAL
+                    double federalPayment = (((((primeRate + 2.5)/100)/12) * OSAPFederalLoans) / (1 - Math.pow((1 + ((primeRate + 2.5)/12)/100), -months ))); // TECHNICALLY ONLY REALLY NEED THIS FOR OUTPUT
+
+                    while(OSAPFederalLoans >= 0){
+                        double federalInterest = (((primeRate+2.5)/100)/12)*OSAPFederalLoans;
+                        double federalPrinciple = federalPayment - federalInterest;
+                        OSAPFederalLoans = OSAPFederalLoans - federalPrinciple;
+
+                        System.out.println(federalInterest);
+                        System.out.println(federalPrinciple);
+                        System.out.println(OSAPFederalLoans);
+                        System.out.println();
+                        count++;
+                    }
+
+                    System.out.println(count);
+
+
+
+
+//                    OSAPCalculatedMonthlyInterest = (((OSAPFederalLoans * ((primeRate+2.5)/100)) + (OSAPProvincialLoans * ((primeRate + 1.0)/100)))/12);
+//                    System.out.println(OSAPCalculatedMonthlyInterest);
 
 
 
