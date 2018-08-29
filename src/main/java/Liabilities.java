@@ -7,14 +7,12 @@ import java.util.Scanner;
 public class Liabilities {
 
     private static Scanner scanner = new Scanner(System.in);
-    private static Double OSAPFunding;
     private static Double OSAPLoans;
     private static Double OSAPGrants;
-    private static Double OSAPFederalLoans;
-    private static Double OSAPProvincialLoans;
     private static Double OSAPMonthlyPayment;
     private static Double LOCBalance;
     private static Double LOCInterest;
+    private static Double LOCMonthlyPayment;
     private static Double primeRate;
 
     public static void main (String[]args){
@@ -35,19 +33,20 @@ public class Liabilities {
                     System.out.println("To date, how much funding have you received from OSAP?");
                     double OSAPFundVar = scanner.nextDouble();
                     System.out.println("How much of this funding was made up of grants, bursaries and other assets?");
-                    double OSAPGrantVar = scanner.nextDouble();
-                    System.out.println("Are you applying for the six month grace period? (Type y or n)");
-                    String sixMonthGracePeriod = scanner.next();
-                    double OSAPBalanceFun = liabilities.setOSAP(OSAPFundVar, OSAPGrantVar, liabilities.sixMonthGracePeriodChoice(sixMonthGracePeriod));
+                    double OSAPGrantsVar = scanner.nextDouble();
+//                    System.out.println("Are you applying for the six month grace period? (Type y or n)");
+//                    String sixMonthGracePeriod = scanner.next();
+                    double OSAPBalanceFun = liabilities.setOSAP(OSAPFundVar, OSAPGrantsVar);
                     System.out.println("What is the prime rate set by the Bank of Canada?");
                     liabilities.setPrimeRate(scanner.nextDouble());
                     System.out.println("Over how many months do you want to take to pay off the loans?");
                     int OSAPMonths = scanner.nextInt();
 
-                    OSAPFederalLoans = OSAPBalanceFun*0.7; // change this back to *0.7 once everything fixed
-                    OSAPProvincialLoans = OSAPBalanceFun*0.3; // change this back to *0.3 once everything fixed;
+                    // loan split assumptions
+                    double OSAPFederalLoans = OSAPBalanceFun*0.7;
+                    double OSAPProvincialLoans = OSAPBalanceFun*0.3;
 
-                    // loan payment formula - FEDERAL
+                    // loan payment formulas - federal/provincial
                     double federalPayment = (((((primeRate + 2.5)/100)/12) * OSAPFederalLoans) / (1 - Math.pow((1 + ((primeRate + 2.5)/12)/100), -OSAPMonths ))); // TECHNICALLY ONLY REALLY NEED THIS FOR OUTPUT
                     double provincialPayment = (((((primeRate + 1.0)/100)/12) * OSAPProvincialLoans) / (1 - Math.pow((1 + ((primeRate + 1.0)/12)/100), -OSAPMonths )));
 
@@ -90,9 +89,9 @@ public class Liabilities {
                     int LOCMonths = scanner.nextInt();
                     double LOCBalanceFun = liabilities.setLOC(LOCFundVar, LOCInterestVar);
 
-                    double LOCPayment = (((((LOCInterest)/100)/12) * LOCBalance) / (1 - Math.pow((1 + ((LOCInterest)/12)/100), -LOCMonths )));
-
-                    System.out.println(LOCPayment);
+                    // amortized LOC monthly payment
+                    LOCMonthlyPayment = (((((LOCInterest)/100)/12) * LOCBalance) / (1 - Math.pow((1 + ((LOCInterest)/12)/100), -LOCMonths )));
+                    System.out.println(LOCMonthlyPayment);
 
                     liabilitiesTotal += LOCBalanceFun;
                     break;
@@ -101,16 +100,15 @@ public class Liabilities {
         return liabilitiesTotal;
     }
 
-    public static double setOSAP (double funding, double grants, boolean sixMonthGrace){
+    public static double setOSAP (double funding, double grants){
         OSAPLoans = funding - grants;
         OSAPGrants = grants;
-        System.out.println(sixMonthGrace);
         return OSAPLoans;
     }
-
-    public static boolean sixMonthGracePeriodChoice(String smgp){
-        return smgp.equals("y") ? true : false;
-    }
+// probably not going to implement smgp, can delete from here and block up top (scanner)
+//    public static boolean sixMonthGracePeriodChoice(String smgp){
+//        return smgp.equals("y") ? true : false;
+//    }
 
     public static double setLOC(double balance, double interest){
         LOCBalance = balance;
@@ -128,6 +126,10 @@ public class Liabilities {
 
     public static double getOSAPMonthlyPayment(){
         return OSAPMonthlyPayment;
+    }
+
+    public static double getLOCMonthlyPayment(){
+        return LOCMonthlyPayment;
     }
 
 }
