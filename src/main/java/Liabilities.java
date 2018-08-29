@@ -1,5 +1,6 @@
 package main.java;
 
+import java.sql.SQLOutput;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -12,7 +13,6 @@ public class Liabilities {
     private static Double OSAPFederalLoans;
     private static Double OSAPProvincialLoans;
     private static Double OSAPMonthlyPayment;
-    private static Double OSAPCalculatedMonthlyInterest;
     private static Double LOCBalance;
     private static Double LOCInterest;
     private static Double primeRate;
@@ -20,8 +20,8 @@ public class Liabilities {
     public static void main (String[]args){
         Liabilities lb = new Liabilities();
         LinkedList linkedList = new LinkedList();
-        linkedList.add(1);
-//        linkedList.add(2);
+//        linkedList.add(1);
+        linkedList.add(2);
         System.out.println(lb.liabilities(linkedList));
     }
 
@@ -42,36 +42,42 @@ public class Liabilities {
                     System.out.println("What is the prime rate set by the Bank of Canada?");
                     liabilities.setPrimeRate(scanner.nextDouble());
                     System.out.println("Over how many months do you want to take to pay off the loans?");
-                    int months = scanner.nextInt();
+                    int OSAPMonths = scanner.nextInt();
 
-                    OSAPFederalLoans = OSAPBalanceFun; // change this back to *0.7 once everything fixed
-                    OSAPProvincialLoans = OSAPBalanceFun*0.3;
-                    double count = 0;
+                    OSAPFederalLoans = OSAPBalanceFun*0.7; // change this back to *0.7 once everything fixed
+                    OSAPProvincialLoans = OSAPBalanceFun*0.3; // change this back to *0.3 once everything fixed;
 
                     // loan payment formula - FEDERAL
-                    double federalPayment = (((((primeRate + 2.5)/100)/12) * OSAPFederalLoans) / (1 - Math.pow((1 + ((primeRate + 2.5)/12)/100), -months ))); // TECHNICALLY ONLY REALLY NEED THIS FOR OUTPUT
+                    double federalPayment = (((((primeRate + 2.5)/100)/12) * OSAPFederalLoans) / (1 - Math.pow((1 + ((primeRate + 2.5)/12)/100), -OSAPMonths ))); // TECHNICALLY ONLY REALLY NEED THIS FOR OUTPUT
+                    double provincialPayment = (((((primeRate + 1.0)/100)/12) * OSAPProvincialLoans) / (1 - Math.pow((1 + ((primeRate + 1.0)/12)/100), -OSAPMonths )));
 
-                    while(OSAPFederalLoans >= 0){
-                        double federalInterest = (((primeRate+2.5)/100)/12)*OSAPFederalLoans;
-                        double federalPrinciple = federalPayment - federalInterest;
-                        OSAPFederalLoans = OSAPFederalLoans - federalPrinciple;
+                    // AMORTIZATION SCHEDULE BLOCK--------------------------------------------
+//                    while(OSAPFederalLoans >= 0){
+//                        double federalInterest = (((primeRate+2.5)/100)/12)*OSAPFederalLoans;
+//                        double federalPrinciple = federalPayment - federalInterest;
+//                        OSAPFederalLoans = OSAPFederalLoans - federalPrinciple;
+//                        System.out.println(federalInterest);
+//                        System.out.println(federalPrinciple);
+//                        System.out.println(OSAPFederalLoans);
+//                        System.out.println();
+//                        count1++;
+//                    }
+//
+//                    while(OSAPProvincialLoans >= 0){
+//                        double provincialInterest = (((primeRate+2.5)/100)/12)*OSAPProvincialLoans;
+//                        double provincialPrinciple = provincialPayment - provincialInterest;
+//                        OSAPProvincialLoans = OSAPProvincialLoans - provincialPrinciple;
+//                        System.out.println(provincialInterest);
+//                        System.out.println(provincialPrinciple);
+//                        System.out.println(OSAPProvincialLoans);
+//                        System.out.println();
+//                        count2++;
+//                    }
+                    // AMORTIZATION SCHEDULE BLOCK---------------------------------------------------
 
-                        System.out.println(federalInterest);
-                        System.out.println(federalPrinciple);
-                        System.out.println(OSAPFederalLoans);
-                        System.out.println();
-                        count++;
-                    }
-
-                    System.out.println(count);
-
-
-
-
-//                    OSAPCalculatedMonthlyInterest = (((OSAPFederalLoans * ((primeRate+2.5)/100)) + (OSAPProvincialLoans * ((primeRate + 1.0)/100)))/12);
-//                    System.out.println(OSAPCalculatedMonthlyInterest);
-
-
+                    // amortized OSAP monthly payment
+                    OSAPMonthlyPayment = federalPayment + provincialPayment;
+                    System.out.println(federalPayment + provincialPayment);
 
                     liabilitiesTotal += OSAPBalanceFun ;
                     break;
@@ -80,7 +86,14 @@ public class Liabilities {
                     double LOCFundVar = scanner.nextDouble();
                     System.out.println("What is the interest rate on your Student Line of Credit?");
                     double LOCInterestVar = scanner.nextDouble();
+                    System.out.println("Over how many months do you want to take to pay off the loans?");
+                    int LOCMonths = scanner.nextInt();
                     double LOCBalanceFun = liabilities.setLOC(LOCFundVar, LOCInterestVar);
+
+                    double LOCPayment = (((((LOCInterest)/100)/12) * LOCBalance) / (1 - Math.pow((1 + ((LOCInterest)/12)/100), -LOCMonths )));
+
+                    System.out.println(LOCPayment);
+
                     liabilitiesTotal += LOCBalanceFun;
                     break;
             }
@@ -109,8 +122,12 @@ public class Liabilities {
         primeRate = primeRateSet;
     }
 
-    public static Double getPrimeRate(){
+    public static double getPrimeRate(){
         return primeRate;
+    }
+
+    public static double getOSAPMonthlyPayment(){
+        return OSAPMonthlyPayment;
     }
 
 }
