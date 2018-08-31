@@ -104,6 +104,9 @@ public class Liabilities {
     private static double setOSAP (double funding, double grants){
         OSAPLoans = funding - grants;
         OSAPGrants = grants;
+        if(OSAPLoans < 0){
+            // fix this
+        }
         return OSAPLoans;
     }
 // probably not going to implement smgp, can delete from here and block up top (scanner)
@@ -123,6 +126,10 @@ public class Liabilities {
 
     public static double getPrimeRate(){
         return primeRate;
+    }
+
+    public static double getGrants(){
+        return OSAPGrants;
     }
 
     public static double getOSAPMonthlyPayment(){
