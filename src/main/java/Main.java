@@ -176,8 +176,8 @@ public class Main {
         System.out.println("Here is a total of your current assets: " + assetsTotal);
 
         System.out.println("I have calculated your estimated monthly amortized payments here: ");
-        System.out.println("Monthly OSAP payment: " + Liabilities.getOSAPMonthlyPayment());
-        System.out.println("Monthly LOC payment: " + Liabilities.getLOCMonthlyPayment());
+        System.out.println("Monthly OSAP payment:  $" + Liabilities.getOSAPMonthlyPayment());
+        System.out.println("Monthly LOC payment:  $" + Liabilities.getLOCMonthlyPayment());
 
         System.out.println("Here is a total of your current liabilities: " + liabilitiesTotal);
 
