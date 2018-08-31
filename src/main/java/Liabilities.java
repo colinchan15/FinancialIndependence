@@ -18,7 +18,7 @@ public class Liabilities {
     public static void main (String[]args){
         Liabilities lb = new Liabilities();
         LinkedList linkedList = new LinkedList();
-//        linkedList.add(1);
+        linkedList.add(1);
         linkedList.add(2);
         System.out.println(lb.liabilities(linkedList));
     }
