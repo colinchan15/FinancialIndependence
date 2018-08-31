@@ -31,16 +31,17 @@ public class Liabilities {
             switch(linkedList.get(i)){
                 case 1:
                     System.out.println("To date, how much funding have you received from OSAP?");
-                    double OSAPFundVar = scanner.nextDouble();
+                    double OSAPFundVar = nonNegative();
                     System.out.println("How much of this funding was made up of grants, bursaries and other assets?");
-                    double OSAPGrantsVar = scanner.nextDouble();
+                    double OSAPGrantsVar = nonNegative();
 //                    System.out.println("Are you applying for the six month grace period? (Type y or n)");
 //                    String sixMonthGracePeriod = scanner.next();
                     double OSAPBalanceFun = liabilities.setOSAP(OSAPFundVar, OSAPGrantsVar);
                     System.out.println("What is the prime rate set by the Bank of Canada?");
-                    liabilities.setPrimeRate(scanner.nextDouble());
+                    double primeRateVar = nonNegative();
+                    liabilities.setPrimeRate(primeRateVar);
                     System.out.println("Over how many months do you want to take to pay off the loans?");
-                    int OSAPMonths = scanner.nextInt();
+                    double OSAPMonths = nonNegative();
 
                     // loan split assumptions
                     double OSAPFederalLoans = OSAPBalanceFun*0.7;
@@ -100,7 +101,7 @@ public class Liabilities {
         return liabilitiesTotal;
     }
 
-    public static double setOSAP (double funding, double grants){
+    private static double setOSAP (double funding, double grants){
         OSAPLoans = funding - grants;
         OSAPGrants = grants;
         return OSAPLoans;
@@ -110,13 +111,13 @@ public class Liabilities {
 //        return smgp.equals("y") ? true : false;
 //    }
 
-    public static double setLOC(double balance, double interest){
+    private static double setLOC(double balance, double interest){
         LOCBalance = balance;
         LOCInterest = interest;
         return LOCBalance;
     }
 
-    public static void setPrimeRate (double primeRateSet){
+    private static void setPrimeRate (double primeRateSet){
         primeRate = primeRateSet;
     }
 
@@ -130,6 +131,19 @@ public class Liabilities {
 
     public static double getLOCMonthlyPayment(){
         return LOCMonthlyPayment;
+    }
+
+    private static double nonNegative(){
+        double variable;
+        while (true) {
+            variable = scanner.nextDouble();
+            if (variable < 0) {
+                System.out.println("Please enter a positive value");
+            } else if (variable >= 0) {
+                break;
+            }
+        }
+        return variable;
     }
 
 }
