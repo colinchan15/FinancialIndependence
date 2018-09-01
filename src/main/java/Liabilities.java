@@ -18,7 +18,7 @@ public class Liabilities {
     public static void main (String[]args){
         Liabilities lb = new Liabilities();
         LinkedList linkedList = new LinkedList();
-        linkedList.add(1);
+//        linkedList.add(1);
         linkedList.add(2);
         System.out.println(lb.liabilities(linkedList));
     }
@@ -83,11 +83,11 @@ public class Liabilities {
                     break;
                 case 2:
                     System.out.println("To date, how much have you borrowed from your student line of credit?");
-                    double LOCFundVar = scanner.nextDouble();
+                    double LOCFundVar = nonNegative();
                     System.out.println("What is the interest rate on your Student Line of Credit?");
-                    double LOCInterestVar = scanner.nextDouble();
+                    double LOCInterestVar = nonNegative();
                     System.out.println("Over how many months do you want to take to pay off the loans?");
-                    int LOCMonths = scanner.nextInt();
+                    double LOCMonths = nonNegative();
                     double LOCBalanceFun = liabilities.setLOC(LOCFundVar, LOCInterestVar);
 
                     // amortized LOC monthly payment
@@ -102,11 +102,12 @@ public class Liabilities {
     }
 
     private static double setOSAP (double funding, double grants){
+        while(grants >= funding){
+            System.out.println("Grants cannot be greater than loans, please enter a valid grant value...");
+            grants = scanner.nextDouble();
+        }
         OSAPLoans = funding - grants;
         OSAPGrants = grants;
-        if(OSAPLoans < 0){
-            // fix this
-        }
         return OSAPLoans;
     }
 // probably not going to implement smgp, can delete from here and block up top (scanner)
