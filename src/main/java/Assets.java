@@ -54,7 +54,7 @@ public class Assets {
             switch (linkedList.get(i)) {
                 case 1:
                     System.out.println("How many chequing accounts do you have?");
-                    int chequingAccNum = scanner.nextInt();
+                    int chequingAccNum = nonNegativeInt();
                     scanner.nextLine();
                     System.out.println("Please enter the name of the account and its current balance separated by a comma");
                     double chequingTotal = 0.0;
@@ -242,4 +242,31 @@ public class Assets {
         assetsTotal += assetsAccBalance;
         return assetsTotal;
     }
+
+    private static int nonNegativeInt(){
+        int variable;
+        while (true) {
+            variable = scanner.nextInt();
+            if (variable < 0) {
+                System.out.println("Please enter a positive value");
+            } else if (variable >= 0) {
+                break;
+            }
+        }
+        return variable;
+    }
+
+    private static double nonNegativeDouble(){
+        double variable;
+        while (true) {
+            variable = scanner.nextDouble();
+            if (variable < 0) {
+                System.out.println("Please enter a positive value");
+            } else if (variable >= 0) {
+                break;
+            }
+        }
+        return variable;
+    }
+
 }
