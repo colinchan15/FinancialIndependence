@@ -10,9 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -24,7 +22,7 @@ public class MainUI extends Application {
     Stage window;
     String user = "user";
     String pw = "pass";
-    String checkUser, checkPw;
+    String checkUser, checkPw, checkName, checkAge;
     Scene login;
     Scene welcome;
 
@@ -36,16 +34,18 @@ public class MainUI extends Application {
     public void start(Stage primaryStage) {
         window = primaryStage;
 
-        primaryStage.setTitle("JavaFX Welcome");
+        primaryStage.setTitle("Prism");
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-        Text scenetitle = new Text("Welcome");
-        scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        grid.add(scenetitle, 0, 0, 2, 1);
+        // BLOCK 1: LOGIN PAGE  --------------------------------------------------
+
+        Text welcomeScene1 = new Text("Welcome");
+        welcomeScene1.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+        grid.add(welcomeScene1, 0, 0, 2, 1);
 
         Label userName = new Label("User Name:");
         grid.add(userName, 0, 1);
@@ -71,17 +71,9 @@ public class MainUI extends Application {
         final Label lblMessage = new Label();
         grid.add(lblMessage, 1, 3);
 
-//        btn.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent e) {
-//                actiontarget.setFill(Color.FIREBRICK);
-//                actiontarget.setText("Sign in button pressed");
-//            }
-//        });
 
         //Action for btn
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
+        btn.setOnAction(e -> {
                 checkUser = userTextField.getText();
                 checkPw = pwBox.getText();
                 System.out.println(checkUser);
@@ -97,18 +89,48 @@ public class MainUI extends Application {
                 }
                 userTextField.setText("");
                 pwBox.setText("");
-            }
         });
         login = new Scene(grid, 300, 275);
 
-        //Button 2
-        Button button2 = new Button("This sucks, go back to scene 1");
-        button2.setOnAction(e -> window.setScene(login));
+        // BLOCK 1: LOGIN PAGE -------------------------------------
+
+
+        // BLOCK2:  WELCOME SCREEN  ----------------------------------------------
+
+        BorderPane bp1 = new BorderPane();
+
+        // TOP
+        Text welcomeScene2 = new Text("Hello and welcome to Prism - a budgeting software designed for students");
+
+        // LEFT
+        HBox welcomeHBox = new HBox(20);
+        welcomeHBox.setPadding(new Insets(20, 20, 20, 20));
+        // name input
+        Label name = new Label("Name: ");
+        TextField namePrompt = new TextField();
+        namePrompt.setPromptText("Name");
+        // age input
+        Label age = new Label("Age: ");
+        TextField agePrompt = new TextField();
+        agePrompt.setPromptText("YYYY-MM-DD");
+        // initilizing Hbox
+        welcomeHBox.getChildren().addAll(name, namePrompt, age, agePrompt);
+
+        // BOTTOM
+        Button nextPageButton = new Button("Next page");
+        nextPageButton.setOnAction(e -> {
+            checkName = namePrompt.getText();
+            checkAge = agePrompt.getText();
+//            if(!checkName.equals(null)) // left off here
+        });
+
+        // Border pane locations
+        bp1.setPadding(new Insets(20, 20, 20, 20));
+        bp1.setLeft(welcomeHBox);
+        bp1.setTop(welcomeScene2);
 
         //Layout 2
-        StackPane layout2 = new StackPane();
-        layout2.getChildren().add(button2);
-        welcome = new Scene(layout2, 1280, 720);
+        welcome = new Scene(bp1, 1280, 720);
 
         primaryStage.setScene(login);
         primaryStage.show();
