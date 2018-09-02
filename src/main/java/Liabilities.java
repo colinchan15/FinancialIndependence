@@ -1,6 +1,7 @@
 package main.java;
 
 import java.sql.SQLOutput;
+import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -142,15 +143,24 @@ public class Liabilities {
     }
 
     private static double nonNegative(){
-        double variable;
-        while (true) {
-            variable = scanner.nextDouble();
-            if (variable < 0) {
-                System.out.println("Please enter a positive value");
-            } else if (variable >= 0) {
-                break;
+        boolean properValue = false;
+        double variable = 0;
+        do {
+            try {
+                while (true) {
+                    variable = scanner.nextDouble();
+                    if (variable < 0) {
+                        System.out.println("Please enter a positive value");
+                    } else if (variable >= 0) {
+                        break;
+                    }
+                }
+                properValue = true;
+            } catch (InputMismatchException e){
+                System.out.println("That is not a proper value");
+                scanner.next();
             }
-        }
+        } while (properValue == false);
         return variable;
     }
 
