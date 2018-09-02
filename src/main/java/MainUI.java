@@ -12,6 +12,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -20,9 +21,12 @@ import javafx.stage.Stage;
 
 public class MainUI extends Application {
 
-    String user = "JavaFX2";
-    String pw = "password";
+    Stage window;
+    String user = "user";
+    String pw = "pass";
     String checkUser, checkPw;
+    Scene login;
+    Scene welcome;
 
     public static void main(String[] args) {
         launch(args);
@@ -30,6 +34,8 @@ public class MainUI extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        window = primaryStage;
+
         primaryStage.setTitle("JavaFX Welcome");
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -47,8 +53,8 @@ public class MainUI extends Application {
         TextField userTextField = new TextField();
         grid.add(userTextField, 1, 1);
 
-        Label pw = new Label("Password:");
-        grid.add(pw, 0, 2);
+        Label password = new Label("Password:");
+        grid.add(password, 0, 2);
 
         PasswordField pwBox = new PasswordField();
         grid.add(pwBox, 1, 2);
@@ -81,8 +87,9 @@ public class MainUI extends Application {
                 System.out.println(checkUser);
                 System.out.println(checkPw);
                 if(checkUser.equals(user) && checkPw.equals(pw)){
-                    lblMessage.setText("Congratulations!");
-                    lblMessage.setTextFill(Color.GREEN);
+//                    lblMessage.setText("Congratulations!");
+//                    lblMessage.setTextFill(Color.GREEN);
+                    window.setScene(welcome);
                 }
                 else{
                     lblMessage.setText("Incorrect user or pw.");
@@ -92,9 +99,18 @@ public class MainUI extends Application {
                 pwBox.setText("");
             }
         });
+        login = new Scene(grid, 300, 275);
 
-        Scene scene = new Scene(grid, 300, 275);
-        primaryStage.setScene(scene);
+        //Button 2
+        Button button2 = new Button("This sucks, go back to scene 1");
+        button2.setOnAction(e -> window.setScene(login));
+
+        //Layout 2
+        StackPane layout2 = new StackPane();
+        layout2.getChildren().add(button2);
+        welcome = new Scene(layout2, 1280, 720);
+
+        primaryStage.setScene(login);
         primaryStage.show();
     }
 }
