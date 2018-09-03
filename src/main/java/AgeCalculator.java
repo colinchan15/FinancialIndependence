@@ -7,6 +7,11 @@ import java.util.Calendar;
 // standard age calculator mainly used for getting TFSA contribution limits
 public class AgeCalculator {
 
+    public static void main(String[] args) {
+        AgeCalculator ageCalculator = new AgeCalculator();
+        System.out.println(ageCalculator.getAge("1996-05-06"));
+    }
+
     public static int ageCalculator (String birthDate, String currentDate){
         LocalDate birthDateParsed = LocalDate.parse(birthDate);
         LocalDate currentDateParsed = LocalDate.parse(currentDate);

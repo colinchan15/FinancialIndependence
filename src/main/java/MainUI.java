@@ -17,6 +17,8 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.time.format.DateTimeParseException;
+
 public class MainUI extends Application {
 
     Stage window;
@@ -98,6 +100,7 @@ public class MainUI extends Application {
         // BLOCK2:  WELCOME SCREEN  ----------------------------------------------
 
         BorderPane bp1 = new BorderPane();
+        GridPane gp1 = new GridPane();
 
         // TOP
         Text welcomeScene2 = new Text("Hello and welcome to Prism - a budgeting software designed for students");
@@ -105,34 +108,69 @@ public class MainUI extends Application {
         // LEFT
         HBox welcomeHBox = new HBox(20);
         welcomeHBox.setPadding(new Insets(20, 20, 20, 20));
+
         // name input
         Label name = new Label("Name: ");
         TextField namePrompt = new TextField();
         namePrompt.setPromptText("Name");
+
         // age input
         Label age = new Label("Age: ");
         TextField agePrompt = new TextField();
         agePrompt.setPromptText("YYYY-MM-DD");
+
         // initilizing Hbox
         welcomeHBox.getChildren().addAll(name, namePrompt, age, agePrompt);
 
         // BOTTOM
         Button nextPageButton = new Button("Next page");
-        nextPageButton.setOnAction(e -> {
-            checkName = namePrompt.getText();
-            checkAge = agePrompt.getText();
-//            if(!checkName.equals(null)) // left off here
-        });
+        nextPageButton.setPadding(new Insets(5, 5, 5, 5));
+        gp1.add(nextPageButton, 0, 0);
+        final Label welcomeIncorrect = new Label();
+        gp1.add(welcomeIncorrect, 5, 0);
+
+        AgeCalculator ageCalculator = new AgeCalculator();
+        boolean executed = false;
+        do {
+            nextPageButton.setOnAction(e -> {
+                try {
+                    checkName = namePrompt.getText();
+                    checkAge = agePrompt.getText();
+                    int clientAge = ageCalculator.getAge(checkAge);
+                    System.out.println(clientAge);
+                    if (!checkName.equals(null) && clientAge > 0) {
+                        window.setScene(login);
+                    } else {
+                        welcomeIncorrect.setText("The information you have entered is incorrect or invalid");
+                        welcomeIncorrect.setTextFill(Color.RED);
+                    }
+                } catch (DateTimeParseException e1) {
+                    welcomeIncorrect.setText("You did not enter the date in the correct format.");
+                    welcomeIncorrect.setTextFill(Color.RED);
+                }
+            });
+            executed = true;
+        } while (executed == false);
 
         // Border pane locations
         bp1.setPadding(new Insets(20, 20, 20, 20));
         bp1.setLeft(welcomeHBox);
         bp1.setTop(welcomeScene2);
+//        bp1.setBottom(nextPageButton);
+        bp1.setBottom(gp1);
+//        bp1.setBottom(welcomeIncorrect);
+
+        // Alignments
+//        BorderPane.setAlignment(nextPageButton, Pos.TOP_RIGHT);
+//        BorderPane.setAlignment(welcomeIncorrect, Pos.TOP_LEFT);
 
         //Layout 2
         welcome = new Scene(bp1, 1280, 720);
 
-        primaryStage.setScene(login);
+        // BLOCK2:  WELCOME SCREEN  ----------------------------------------------
+
+
+        primaryStage.setScene(welcome);
         primaryStage.show();
     }
 }
