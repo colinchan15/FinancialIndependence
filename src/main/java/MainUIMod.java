@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 
 import java.time.format.DateTimeParseException;
 
-public class MainUI extends Application {
+public class MainUIMod extends Application {
 
     Stage window;
     String user = "user";
@@ -36,14 +36,19 @@ public class MainUI extends Application {
     public void start(Stage primaryStage) {
         window = primaryStage;
 
+        primaryStage.setScene(welcome(primaryStage));
+        primaryStage.show();
+    }
+
+    private Scene login(Stage primaryStage){
+        window = primaryStage;
+
         primaryStage.setTitle("Prism");
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
-
-        // BLOCK 1: LOGIN PAGE  --------------------------------------------------
 
         Text welcomeScene1 = new Text("Welcome");
         welcomeScene1.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
@@ -76,28 +81,28 @@ public class MainUI extends Application {
 
         //Action for btn
         btn.setOnAction(e -> {
-                checkUser = userTextField.getText();
-                checkPw = pwBox.getText();
-                System.out.println(checkUser);
-                System.out.println(checkPw);
-                if(checkUser.equals(user) && checkPw.equals(pw)){
+            checkUser = userTextField.getText();
+            checkPw = pwBox.getText();
+            System.out.println(checkUser);
+            System.out.println(checkPw);
+            if(checkUser.equals(user) && checkPw.equals(pw)){
 //                    lblMessage.setText("Congratulations!");
 //                    lblMessage.setTextFill(Color.GREEN);
-                    window.setScene(welcome);
-                }
-                else{
-                    lblMessage.setText("Incorrect user or pw.");
-                    lblMessage.setTextFill(Color.RED);
-                }
-                userTextField.setText("");
-                pwBox.setText("");
+                window.setScene(welcome);
+            }
+            else{
+                lblMessage.setText("Incorrect user or pw.");
+                lblMessage.setTextFill(Color.RED);
+            }
+            userTextField.setText("");
+            pwBox.setText("");
         });
         login = new Scene(grid, 300, 275);
 
-        // BLOCK 1: LOGIN PAGE -------------------------------------
+        return login;
+    }
 
-
-        // BLOCK2:  WELCOME SCREEN  ----------------------------------------------
+    private Scene welcome (Stage primaryStage){
 
         BorderPane bp1 = new BorderPane();
         GridPane gp1 = new GridPane();
@@ -139,7 +144,7 @@ public class MainUI extends Application {
                     int clientAge = ageCalculator.getAge(checkAge);
                     System.out.println(clientAge);
                     if (!checkName.equals(null) && clientAge > 0) {
-                        window.setScene(login);
+                        window.setScene(login(primaryStage));
                     } else {
                         welcomeIncorrect.setText("The information you have entered is incorrect or invalid");
                         welcomeIncorrect.setTextFill(Color.RED);
@@ -167,10 +172,7 @@ public class MainUI extends Application {
         //Layout 2
         welcome = new Scene(bp1, 1280, 720);
 
-        // BLOCK2:  WELCOME SCREEN  ----------------------------------------------
-
-
-        primaryStage.setScene(welcome);
-        primaryStage.show();
+        return welcome;
     }
+
 }
