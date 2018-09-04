@@ -6,10 +6,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -21,12 +18,16 @@ import java.time.format.DateTimeParseException;
 
 public class MainUIMod extends Application {
 
+
+
     Stage window;
     String user = "user";
     String pw = "pass";
     String checkUser, checkPw, checkName, checkAge;
     Scene login;
     Scene welcome;
+    Scene mainMenu;
+    Scene assets;
 
     public static void main(String[] args) {
         launch(args);
@@ -36,7 +37,7 @@ public class MainUIMod extends Application {
     public void start(Stage primaryStage) {
         window = primaryStage;
 
-        primaryStage.setScene(welcome(primaryStage));
+        primaryStage.setScene(assets(primaryStage));
         primaryStage.show();
     }
 
@@ -144,7 +145,7 @@ public class MainUIMod extends Application {
                     int clientAge = ageCalculator.getAge(checkAge);
                     System.out.println(clientAge);
                     if (!checkName.equals(null) && clientAge > 0) {
-                        window.setScene(login(primaryStage));
+                        window.setScene(mainMenu(primaryStage));
                     } else {
                         welcomeIncorrect.setText("The information you have entered is incorrect or invalid");
                         welcomeIncorrect.setTextFill(Color.RED);
@@ -173,6 +174,113 @@ public class MainUIMod extends Application {
         welcome = new Scene(bp1, 1280, 720);
 
         return welcome;
+    }
+
+    private Scene mainMenu (Stage primaryStage){
+        // initializing layouts
+        BorderPane bp = new BorderPane();
+        GridPane gp = new GridPane();
+        VBox vb = new VBox();
+        boolean executed = false;
+
+        // set layout margins
+        vb.setPadding(new Insets(10, 10, 10, 10));
+        vb.setSpacing(8);
+
+        // setting titles and labels
+        Text title = new Text("Data Input");
+        title.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        vb.getChildren().add(title);
+
+        // initializing hyperlinks
+        Hyperlink options[] = new Hyperlink[] {
+                new Hyperlink("Assets"),
+                new Hyperlink("Liabilities"),
+                new Hyperlink("Budget"),
+                new Hyperlink("Costs")};
+
+        // initializing hyperlink layouts
+        for (int i=0; i<4; i++) {
+            VBox.setMargin(options[i], new Insets(0, 0, 0, 8));
+            vb.getChildren().add(options[i]);
+        }
+
+        options[0].setOnAction(e -> {
+            window.setScene(welcome(primaryStage));
+        });
+
+
+
+        mainMenu = new Scene (vb, 1280, 720);
+
+        return mainMenu;
+    }
+
+    private Scene assets (Stage primaryStage){
+        VBox vb = new VBox();
+        vb.setPadding(new Insets(10, 10, 10, 10));
+        vb.setSpacing(10);
+
+        HBox checkboxes = new HBox();
+        checkboxes.setPadding(new Insets(10, 10, 10, 10));
+
+        HBox chequingsSelection = new HBox(20);
+
+        HBox savingsSelection = new HBox(20);
+
+
+        GridPane gp = new GridPane();
+        gp.setVgap(5);
+        gp.setPadding(new Insets(25, 25, 25, 25));
+
+        Text title = new Text("Assets");
+        title.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        gp.add(title, 0, 0);
+
+        Text description = new Text("Please select all assets you would like to include in your budget");
+        gp.add(description, 0, 3);
+
+        CheckBox [] options = new CheckBox[]{
+                new CheckBox("Chequings"),
+                new CheckBox("Savings"),
+                new CheckBox("High-Interest Savings"),
+                new CheckBox("GIC"),
+                new CheckBox("TFSA"),
+                new CheckBox("RRSP")
+        };
+
+        for (int i = 0; i < options.length; i++){
+            HBox.setMargin(options[i], new Insets(20, 30, 0, 0));
+            checkboxes.getChildren().add(options[i]);
+        }
+        gp.add(checkboxes, 0, 6);
+
+        // after clicking chequings checkbox
+
+        options[0].setOnAction(e -> {
+            ChoiceBox <Integer> chequingsChoice = new ChoiceBox<>();
+            Label chequingsLabel = new Label ("How many chequings accounts do you have?");
+            chequingsChoice.getItems().addAll(1,2,3,4,5);
+            chequingsChoice.setValue(1);
+            chequingsSelection.setAlignment(Pos.BOTTOM_LEFT);
+            chequingsSelection.getChildren().addAll(chequingsLabel, chequingsChoice);
+            gp.add(chequingsSelection, 0, 8);
+        });
+
+        options[1].setOnAction(e -> {
+            ChoiceBox <Integer> savingsChoice = new ChoiceBox<>();
+            Label savingsLabel = new Label ("How many savings accounts do you have?");
+            savingsChoice.getItems().addAll(1,2,3,4,5);
+            savingsChoice.setValue(1);
+            savingsSelection.setAlignment(Pos.BOTTOM_LEFT);
+            savingsSelection.getChildren().addAll(savingsLabel, savingsChoice);
+            gp.add(savingsSelection, 0, 9);
+        });
+
+
+        assets = new Scene (gp, 1280, 720);
+
+        return assets;
     }
 
 }
