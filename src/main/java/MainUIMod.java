@@ -237,10 +237,9 @@ public class MainUIMod extends Application {
         checkboxContainer.setPadding(new Insets(5, 5, 5, 5));
         checkboxContainer.setSpacing(20);
 
-        String [] optionsString = new String []{"A", "B", "C", "D", "E", "F"};
+        String [] optionsString = new String []{"Chequings", "Savings", "High-Interest Savings", "GIC", "TFSA", "RRSP"};
 
         for (int i = 0; i < optionsString.length; i++) {
-            final int column = i;
             final int row = i;
             String option = optionsString[i];
             CheckBox checkBox = new CheckBox(option);
@@ -250,14 +249,17 @@ public class MainUIMod extends Application {
             choice.getItems().addAll(1, 2, 3, 4, 5);
 
             HBox choiceContainer = new HBox(label, choice);
+            choiceContainer.setSpacing(10);
 
-            checkBox.selectedProperty().addListener((o, oldValue, newValue) -> {
-                if (newValue) {
-                    gp.add(choiceContainer, 0, row + 4);
-                } else {
-                    gp.getChildren().remove(choiceContainer);
-                }
-            });
+            if(i < 4) {
+                checkBox.selectedProperty().addListener((o, oldValue, newValue) -> {
+                    if (newValue) {
+                        gp.add(choiceContainer, 0, row + 4);
+                    } else {
+                        gp.getChildren().remove(choiceContainer);
+                    }
+                });
+            }
             checkboxContainer.getChildren().add(checkBox);
         }
         gp.add(checkboxContainer, 0, 3);
