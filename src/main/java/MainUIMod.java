@@ -7,6 +7,9 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -14,6 +17,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.time.format.DateTimeParseException;
 
 public class MainUIMod extends Application {
@@ -217,17 +221,6 @@ public class MainUIMod extends Application {
     }
 
     private Scene assets (Stage primaryStage){
-        VBox vb = new VBox();
-        vb.setPadding(new Insets(10, 10, 10, 10));
-        vb.setSpacing(10);
-
-        HBox checkboxes = new HBox();
-        checkboxes.setPadding(new Insets(10, 10, 10, 10));
-
-        HBox chequingsSelection = new HBox(20);
-
-        HBox savingsSelection = new HBox(20);
-
 
         GridPane gp = new GridPane();
         gp.setVgap(5);
@@ -238,44 +231,36 @@ public class MainUIMod extends Application {
         gp.add(title, 0, 0);
 
         Text description = new Text("Please select all assets you would like to include in your budget");
-        gp.add(description, 0, 3);
+        gp.add(description, 0, 1);
 
-        CheckBox [] options = new CheckBox[]{
-                new CheckBox("Chequings"),
-                new CheckBox("Savings"),
-                new CheckBox("High-Interest Savings"),
-                new CheckBox("GIC"),
-                new CheckBox("TFSA"),
-                new CheckBox("RRSP")
-        };
+        HBox checkboxContainer = new HBox();
+        checkboxContainer.setPadding(new Insets(5, 5, 5, 5));
+        checkboxContainer.setSpacing(20);
 
-        for (int i = 0; i < options.length; i++){
-            HBox.setMargin(options[i], new Insets(20, 30, 0, 0));
-            checkboxes.getChildren().add(options[i]);
+        String [] optionsString = new String []{"A", "B", "C", "D", "E", "F"};
+
+        for (int i = 0; i < optionsString.length; i++) {
+            final int column = i;
+            final int row = i;
+            String option = optionsString[i];
+            CheckBox checkBox = new CheckBox(option);
+
+            ChoiceBox<Integer> choice = new ChoiceBox<>();
+            Label label = new Label("How many " + optionsString[i] + " options do you have?");
+            choice.getItems().addAll(1, 2, 3, 4, 5);
+
+            HBox choiceContainer = new HBox(label, choice);
+
+            checkBox.selectedProperty().addListener((o, oldValue, newValue) -> {
+                if (newValue) {
+                    gp.add(choiceContainer, 0, row + 4);
+                } else {
+                    gp.getChildren().remove(choiceContainer);
+                }
+            });
+            checkboxContainer.getChildren().add(checkBox);
         }
-        gp.add(checkboxes, 0, 6);
-
-        // after clicking chequings checkbox
-
-        options[0].setOnAction(e -> {
-            ChoiceBox <Integer> chequingsChoice = new ChoiceBox<>();
-            Label chequingsLabel = new Label ("How many chequings accounts do you have?");
-            chequingsChoice.getItems().addAll(1,2,3,4,5);
-            chequingsChoice.setValue(1);
-            chequingsSelection.setAlignment(Pos.BOTTOM_LEFT);
-            chequingsSelection.getChildren().addAll(chequingsLabel, chequingsChoice);
-            gp.add(chequingsSelection, 0, 8);
-        });
-
-        options[1].setOnAction(e -> {
-            ChoiceBox <Integer> savingsChoice = new ChoiceBox<>();
-            Label savingsLabel = new Label ("How many savings accounts do you have?");
-            savingsChoice.getItems().addAll(1,2,3,4,5);
-            savingsChoice.setValue(1);
-            savingsSelection.setAlignment(Pos.BOTTOM_LEFT);
-            savingsSelection.getChildren().addAll(savingsLabel, savingsChoice);
-            gp.add(savingsSelection, 0, 9);
-        });
+        gp.add(checkboxContainer, 0, 3);
 
 
         assets = new Scene (gp, 1280, 720);
