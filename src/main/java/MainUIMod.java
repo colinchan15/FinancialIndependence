@@ -291,12 +291,12 @@ public class MainUIMod extends Application {
 
         // button may be unneeded
         Button nextPage = new Button ("Next Page");
-        gp.add(nextPage, 10, 4);
+        gp.add(nextPage, 10, 20);
 
 //        nextPage.setOnAction(e -> {
 //                });
 
-        assets = new Scene (gp, 1280, 720);
+        assets = new Scene (gp, 800, 500);
 
         return assets;
     }
