@@ -1,6 +1,8 @@
 package main.java;
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -28,6 +30,7 @@ public class MainUIMod extends Application {
     String user = "user";
     String pw = "pass";
     String checkUser, checkPw, checkName, checkAge;
+    Integer chequingsAssets, savingsAssets, HIAssets, GICAssets;
     Scene login;
     Scene welcome;
     Scene mainMenu;
@@ -261,9 +264,37 @@ public class MainUIMod extends Application {
                 });
             }
             checkboxContainer.getChildren().add(checkBox);
+            if (i == 0) {
+                choice.getSelectionModel().selectedIndexProperty().addListener((o, oldValue, newValue) -> {
+                    chequingsAssets = choice.getItems().get((Integer) newValue);
+                    System.out.println("Chequings value is: " + chequingsAssets);
+                });
+            } else if (i == 1){
+                choice.getSelectionModel().selectedIndexProperty().addListener((o, oldValue, newValue) -> {
+                    savingsAssets = choice.getItems().get((Integer) newValue);
+                    System.out.println("Savings value is : " + savingsAssets);
+                });
+            } else if (i == 2){
+                choice.getSelectionModel().selectedIndexProperty().addListener((o, oldValue, newValue) -> {
+                    HIAssets = choice.getItems().get((Integer) newValue);
+                    System.out.println("High-Interest Savings value is : " + HIAssets);
+                });
+            } else if (i == 3){
+                choice.getSelectionModel().selectedIndexProperty().addListener((o, oldValue, newValue) -> {
+                    GICAssets = choice.getItems().get((Integer) newValue);
+                    System.out.println("GIC value is : " + GICAssets);
+                });
+            }
         }
+
         gp.add(checkboxContainer, 0, 3);
 
+        // button may be unneeded
+        Button nextPage = new Button ("Next Page");
+        gp.add(nextPage, 10, 4);
+
+//        nextPage.setOnAction(e -> {
+//                });
 
         assets = new Scene (gp, 1280, 720);
 
