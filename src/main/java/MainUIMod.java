@@ -34,7 +34,8 @@ public class MainUIMod extends Application {
     Scene login;
     Scene welcome;
     Scene mainMenu;
-    Scene assets;
+    Scene assetsNum;
+    Scene getAssets;
 
     public static void main(String[] args) {
         launch(args);
@@ -44,7 +45,7 @@ public class MainUIMod extends Application {
     public void start(Stage primaryStage) {
         window = primaryStage;
 
-        primaryStage.setScene(assets(primaryStage));
+        primaryStage.setScene(getAssets(primaryStage));
         primaryStage.show();
     }
 
@@ -223,7 +224,7 @@ public class MainUIMod extends Application {
         return mainMenu;
     }
 
-    private Scene assets (Stage primaryStage){
+    private Scene assetsNum (Stage primaryStage){
 
         GridPane gp = new GridPane();
         gp.setVgap(5);
@@ -293,12 +294,51 @@ public class MainUIMod extends Application {
         Button nextPage = new Button ("Next Page");
         gp.add(nextPage, 10, 20);
 
-//        nextPage.setOnAction(e -> {
-//                });
+        nextPage.setOnAction(e -> {
+            window.setScene(getAssets(primaryStage));
+                });
 
-        assets = new Scene (gp, 800, 500);
+        assetsNum = new Scene (gp, 800, 500);
 
-        return assets;
+        return assetsNum;
+    }
+
+    private Scene getAssets (Stage primaryStage){
+
+        GridPane gp = new GridPane();
+        gp.setVgap(5);
+        gp.setPadding(new Insets(25, 25, 25, 25));
+
+        Text title = new Text("Assets Input");
+        title.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        gp.add(title, 0, 0);
+
+        // must delete afterwards
+        chequingsAssets = 3;
+
+        System.out.println(chequingsAssets);
+
+        int [] chequingsAccounts = new int [chequingsAssets];
+
+        for (int i = 0; i < chequingsAssets; i++){
+
+            Label chequingsName = new Label ("Name of Account: ");
+            TextField chequingsNameInp = new TextField();
+
+//            HBox chequingsContainer = new HBox();
+//            chequingsContainer.setSpacing(15);
+//            chequingsContainer.getChildren().addAll(chequingsName, chequingsNameInp);
+////            chequingsContainer.setSpacing(10);
+//            gp.add(chequingsContainer, 0, 3);
+
+            HBox [] chequingsContainer = new HBox[chequingsAssets];
+//            chequingsContainer[i].getChildren().addAll(chequingsName, chequingsNameInp); //must fix this line
+
+        }
+
+        getAssets = new Scene(gp,800, 800);
+
+        return getAssets;
     }
 
 }
