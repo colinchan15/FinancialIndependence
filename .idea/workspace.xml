@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1746c61d-3165-439b-8f26-c1503b4d001c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/GUI/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/MainGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FinancialIndependence/main/java/Assets.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FinancialIndependence/main/java/Assets.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/MainGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MainGUI.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -65,12 +66,12 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="fxml" value="23" />
-          <entry key="java" value="25857" />
+          <entry key="java" value="26103" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="25857" />
+          <entry key="JAVA" value="26103" />
           <entry key="XML" value="23" />
         </counts>
       </usages-collector>
@@ -93,7 +94,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
+            <state relative-caret-position="15">
               <caret line="48" column="134" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="134" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -105,8 +106,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/MainUIMod.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="325" column="9" selection-start-line="325" selection-start-column="9" selection-end-line="325" selection-end-column="9" />
+            <state relative-caret-position="281">
+              <caret line="47" column="39" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -114,11 +115,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/MainGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+            <state relative-caret-position="300">
+              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -136,11 +137,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GUI/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+              <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -241,12 +242,12 @@
         <option value="$PROJECT_DIR$/src/main/java/MainUI.java" />
         <option value="$PROJECT_DIR$/src/ExcelDemo/MainUI.java" />
         <option value="$PROJECT_DIR$/src/main/java/ChequingsAccounts.java" />
-        <option value="$PROJECT_DIR$/src/main/java/MainUIMod.java" />
         <option value="$PROJECT_DIR$/src/main/java/Assets.java" />
         <option value="$PROJECT_DIR$/src/ExcelDemo/sample.fxml" />
         <option value="$PROJECT_DIR$/src/GUI/sample.fxml" />
-        <option value="$PROJECT_DIR$/src/GUI/Controller.java" />
         <option value="$PROJECT_DIR$/src/GUI/MainGUI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/MainUIMod.java" />
+        <option value="$PROJECT_DIR$/src/GUI/Controller.java" />
       </list>
     </option>
   </component>
@@ -307,7 +308,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536938399918" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536940303592" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -334,7 +335,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.MainUIMod">
+  <component name="RunManager" selected="Application.MainGUI">
     <configuration name="AgeCalculator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.java.AgeCalculator" />
       <module name="FinancialIndependence" />
@@ -361,12 +362,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LayoutSample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ExcelDemo.LayoutSample" />
+    <configuration name="MainGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI.MainGUI" />
       <module name="FinancialIndependence" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ExcelDemo.*" />
+          <option name="PATTERN" value="GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -403,17 +404,17 @@
     <list>
       <item itemvalue="Application.Assets" />
       <item itemvalue="Application.MainUI" />
-      <item itemvalue="Application.LayoutSample" />
       <item itemvalue="Application.AgeCalculator" />
       <item itemvalue="Application.MainUIMod" />
+      <item itemvalue="Application.MainGUI" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainGUI" />
         <item itemvalue="Application.MainUIMod" />
         <item itemvalue="Application.MainUI" />
         <item itemvalue="Application.AgeCalculator" />
         <item itemvalue="Application.Assets" />
-        <item itemvalue="Application.LayoutSample" />
       </list>
     </recent_temporary>
   </component>
@@ -453,18 +454,18 @@
       <workItem from="1536256277238" duration="8955000" />
       <workItem from="1536536953599" duration="661000" />
       <workItem from="1536886993473" duration="1678000" />
-      <workItem from="1536937443957" duration="850000" />
+      <workItem from="1536937443957" duration="2171000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="167787000" />
+    <option name="totallyTimeSpent" value="169108000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="777" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16962843" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16962843" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -473,7 +474,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32876712" />
-      <window_info anchor="bottom" x="0" y="45" width="1280" height="687" id="Run" order="2" weight="0.32554746" />
+      <window_info active="true" anchor="bottom" x="0" y="45" width="1280" height="687" id="Run" order="2" visible="true" weight="0.32554746" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -482,7 +483,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.3260274" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32554746" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -592,16 +593,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="48" column="134" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="134" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ChequingsAccounts.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -629,20 +620,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/MainUIMod.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="325" column="9" selection-start-line="325" selection-start-column="9" selection-end-line="325" selection-end-column="9" />
+        <state relative-caret-position="15">
+          <caret line="48" column="134" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="134" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/GUI/MainGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="300">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/MainUIMod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="47" column="39" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -654,13 +658,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/MainGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/GUI/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="60">
+          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
         </state>
       </provider>
     </entry>
