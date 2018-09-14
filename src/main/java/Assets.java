@@ -47,6 +47,7 @@ public class Assets {
 
     // Main function for returning $total assets
     public static double assets(LinkedList<Integer> linkedList, int clientAge) {
+        main.java.MainUIMod MUIM= new main.java.MainUIMod();
         main.java.Assets assets = new main.java.Assets();
         double assetsTotal = 0;
         System.out.println("\nAssets inflow and outflow inputting section");
@@ -55,8 +56,7 @@ public class Assets {
             switch (linkedList.get(i)) {
                 case 1:
                     System.out.println("How many chequing accounts do you have?");
-                    int chequingAccNum = nonNegativeInt();
-                    scanner.nextLine();
+                    int chequingAccNum = MUIM.chequingsAssets;
                     System.out.println("Please enter the name of the account and its current balance separated by a comma");
                     double chequingTotal = 0.0;
                     double chequingBalance = assets.setChequing(chequingAccNum,chequingTotal);
@@ -156,14 +156,16 @@ public class Assets {
             boolean executed = false;
             do {
                 try {
-                    String assetsInput = scanner.nextLine();
-                    String[] assetsSplit = assetsInput.replaceAll("\\s", "").replaceAll("\\$", "").replaceAll("\\%", "").split(",");
-                    String assetsAccName = assetsSplit[0] + " " + "- Chequing Account";
-                    double assetsAccBalance = Double.parseDouble(assetsSplit[1]);
-                    setChequing = new Chequing(assetsAccName, assetsAccBalance);
-                    hmAssets.put(setChequing.getAccName(), setChequing.getCurrentBalance());
-                    assetsTotal += assetsAccBalance;
-                    executed = true;
+//                    String assetsInput = scanner.nextLine();
+//                    String[] assetsSplit = assetsInput.replaceAll("\\s", "").replaceAll("\\$", "").replaceAll("\\%", "").split(",");
+//                    String assetsAccName = assetsSplit[0] + " " + "- Chequing Account";
+//                    double assetsAccBalance = Double.parseDouble(assetsSplit[1]);
+//                    setChequing = new Chequing(assetsAccName, assetsAccBalance);
+//                    hmAssets.put(setChequing.getAccName(), setChequing.getCurrentBalance());
+//                    assetsTotal += assetsAccBalance;
+//                    executed = true;
+
+
                 } catch (IndexOutOfBoundsException e) {
                     System.out.println("You did not enter all the information correct, or you are missing some information. Please try again");
                 } catch (NumberFormatException e){

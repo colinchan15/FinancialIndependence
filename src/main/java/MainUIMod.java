@@ -321,6 +321,7 @@ public class MainUIMod extends Application {
             TextField chequingsBalanceInp = new TextField();
             chequingsContainer.getChildren().addAll(chequingsName, chequingsNameInp, chequingsBalance, chequingsBalanceInp);
             chequingsContainer.setSpacing(10);
+            chequingsContainer.setPadding(new Insets(10,10,10,10));
             gp.add(chequingsContainer, 0, i+3);
         }
 
