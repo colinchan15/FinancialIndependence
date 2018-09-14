@@ -45,7 +45,7 @@ public class MainUIMod extends Application {
     public void start(Stage primaryStage) {
         window = primaryStage;
 
-        primaryStage.setScene(getAssets(primaryStage));
+        primaryStage.setScene(assetsNum(primaryStage));
         primaryStage.show();
     }
 
@@ -313,27 +313,15 @@ public class MainUIMod extends Application {
         title.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         gp.add(title, 0, 0);
 
-        // must delete afterwards
-        chequingsAssets = 3;
-
-        System.out.println(chequingsAssets);
-
-        int [] chequingsAccounts = new int [chequingsAssets];
-
-        for (int i = 0; i < chequingsAssets; i++){
-
-            Label chequingsName = new Label ("Name of Account: ");
+        for (int i = 0; i < chequingsAssets; i++) {
+            HBox chequingsContainer = new HBox();
+            Label chequingsName = new Label("Name of Account: ");
             TextField chequingsNameInp = new TextField();
-
-//            HBox chequingsContainer = new HBox();
-//            chequingsContainer.setSpacing(15);
-//            chequingsContainer.getChildren().addAll(chequingsName, chequingsNameInp);
-////            chequingsContainer.setSpacing(10);
-//            gp.add(chequingsContainer, 0, 3);
-
-            HBox [] chequingsContainer = new HBox[chequingsAssets];
-//            chequingsContainer[i].getChildren().addAll(chequingsName, chequingsNameInp); //must fix this line
-
+            Label chequingsBalance = new Label ("Account balance: ");
+            TextField chequingsBalanceInp = new TextField();
+            chequingsContainer.getChildren().addAll(chequingsName, chequingsNameInp, chequingsBalance, chequingsBalanceInp);
+            chequingsContainer.setSpacing(10);
+            gp.add(chequingsContainer, 0, i+3);
         }
 
         getAssets = new Scene(gp,800, 800);
