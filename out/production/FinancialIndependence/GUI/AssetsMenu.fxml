@@ -22,7 +22,7 @@
                         <Font name="Arial Bold" size="26.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter the number of accounts you have for each asset. If none, leave blank. " />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter the number of accounts you have for each asset. If none, leave blank. (Max - 5 accounts per asset))" />
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                      <children>
                         <Label text="Chequings Accounts:" />

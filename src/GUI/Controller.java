@@ -43,14 +43,16 @@ public class Controller {
 
     public void assetsMenuSubmitButtonPushed(ActionEvent event) throws IOException {
 
-//        chequingsNum = nullOrNot(cheqAccountNum);
+        chequingsNum = nullOrNot(cheqAccountNum);
         savingsNum = nullOrNot(savingsAccountNum);
-//        HISANum = nullOrNot(HISAAccountNum);
-//        GICNum = nullOrNot(GICAccountNum);
-//        TFSANum = nullOrNot(TFSAAccountNum);
-//        RRSPNum = nullOrNot(RRSPAccountNum);
+        HISANum = nullOrNot(HISAAccountNum);
+        GICNum = nullOrNot(GICAccountNum);
+        TFSANum = nullOrNot(TFSAAccountNum);
+        RRSPNum = nullOrNot(RRSPAccountNum);
+        //tests
 //        System.out.println(chequingsNum);
-        System.out.println(savingsNum);
+//        System.out.println(savingsNum);
+        //tests
     }
 
     public int nullOrNot (TextField accountNum){
