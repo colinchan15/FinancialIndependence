@@ -36,35 +36,35 @@
                         <Insets top="20.0" />
                      </padding>
                   </HBox>
-                  <HBox prefHeight="167.0" prefWidth="690.0" spacing="15.0">
-                     <children>
-                        <Label text="GIC Accounts:">
-                           <HBox.margin>
-                              <Insets left="43.0" />
-                           </HBox.margin>
-                        </Label>
-                        <TextField fx:id="GICAccountNum" prefHeight="27.0" prefWidth="36.0">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </TextField>
-                        <Label text="TFSA Accounts:">
-                           <padding>
-                              <Insets left="15.0" />
-                           </padding>
-                        </Label>
-                        <TextField fx:id="TFSAAccountNum" prefHeight="27.0" prefWidth="36.0" />
-                        <Label text="RRSP Accounts:">
-                           <padding>
-                              <Insets left="100.0" />
-                           </padding>
-                        </Label>
-                        <TextField fx:id="RRSPAccountNum" prefHeight="27.0" prefWidth="36.0" />
-                     </children>
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding>
-                  </HBox>
+                  <!--<HBox prefHeight="167.0" prefWidth="690.0" spacing="15.0">-->
+                     <!--<children>-->
+                        <!--<Label text="GIC Accounts:">-->
+                           <!--<HBox.margin>-->
+                              <!--<Insets left="43.0" />-->
+                           <!--</HBox.margin>-->
+                        <!--</Label>-->
+                        <!--<TextField fx:id="GICAccountNum" prefHeight="27.0" prefWidth="36.0">-->
+                           <!--<HBox.margin>-->
+                              <!--<Insets />-->
+                           <!--</HBox.margin>-->
+                        <!--</TextField>-->
+                        <!--<Label text="TFSA Accounts:">-->
+                           <!--<padding>-->
+                              <!--<Insets left="15.0" />-->
+                           <!--</padding>-->
+                        <!--</Label>-->
+                        <!--<TextField fx:id="TFSAAccountNum" prefHeight="27.0" prefWidth="36.0" />-->
+                        <!--<Label text="RRSP Accounts:">-->
+                           <!--<padding>-->
+                              <!--<Insets left="100.0" />-->
+                           <!--</padding>-->
+                        <!--</Label>-->
+                        <!--<TextField fx:id="RRSPAccountNum" prefHeight="27.0" prefWidth="36.0" />-->
+                     <!--</children>-->
+                     <!--<padding>-->
+                        <!--<Insets top="10.0" />-->
+                     <!--</padding>-->
+                  <!--</HBox>-->
                   <AnchorPane prefHeight="109.0" prefWidth="691.0">
                      <children>
                         <Button layoutX="588.0" layoutY="14.0" mnemonicParsing="false" onAction="#assetsMenuSubmitButtonPushed" text="Submit Info" />
