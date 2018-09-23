@@ -14,6 +14,6 @@ Mid August 2018 - Designing and developing the backend of the app using Java
 
 Late August 2018 - Began developing and integrating front-end of project with the back-end using JavaFX
 
-Early September - Continue developing user interface 
+Early September 2018 - Continue developing user interface 
 
 Current - Integrating user-interface with back-end 
