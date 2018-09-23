@@ -7,8 +7,13 @@ This tool estimates the approximate amount of time it will take for a student to
 I began this project because I believe the presentation of convoluted data in a simple and concise way is beautiful, elegant, and most importantly, useful.
 
 Project Timeline:
+
 Early August 2018 - Started designing the initial idea of the project and what it should accomplish
+
 Mid August 2018 - Designing and developing the backend of the app using Java
+
 Late August 2018 - Began developing and integrating front-end of project with the back-end using JavaFX
+
 Early September - Continue developing user interface 
+
 Current - Integrating user-interface with back-end 
